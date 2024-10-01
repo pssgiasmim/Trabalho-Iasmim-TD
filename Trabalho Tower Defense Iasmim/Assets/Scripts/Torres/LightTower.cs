@@ -13,5 +13,15 @@ public class LightTower : TowerBase
         TipoDeDano = "light"; //O tipo de dano é luz
     }
 
+    //Elaboração do ataque da Torre de Luz
+    public override void Atacar(List<Enemy>enemiesInRange)
+    {
+        //Para cada Inimigo em inimigoEmPerigo
+        foreach(Enemy enemy in enemiesInRange)
+        {
+            //Aqui ataca todos os inimigos.
+            enemy.PegarDano(Dano);
+        }
+    }
 
 }
