@@ -2,17 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class IAtacar : MonoBehaviour
+public interface IAtacavel 
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    //Define o comportamento de ataque ao inimigo
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    //Método que ataca o inimigo
+    public void Atacar();
+
 }
