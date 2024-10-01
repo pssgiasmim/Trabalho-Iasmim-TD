@@ -13,4 +13,10 @@ public class FireTower : TowerBase
         TipoDeDano = "fire"; //O tipo de dano desta torre é fogo.
    }
 
+    //Elaboração do ataque da Torre de Fogo.
+    public override void Atacar()
+    { 
+        foreach 
+    }
+
 }
