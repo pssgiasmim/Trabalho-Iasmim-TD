@@ -2,17 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class IceTower : MonoBehaviour
+public class IceTower : TowerBase
 {
-    // Start is called before the first frame update
-    void Start()
+    //Método responsável por organizar informações de IceTower
+    public void Start()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        TaxaDeAtaque = 1.5f; //A taxa de ataque é de 1.5 float.
+        Alcance = 4.0f; //O alcançe/distância é de 4.
+        Dano = 8; //O valor do dano é de 8.
+        TipoDeDano = "ice"; //O tipo de dano é gelo.
     }
 }
