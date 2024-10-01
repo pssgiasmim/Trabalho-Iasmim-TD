@@ -4,15 +4,8 @@ using UnityEngine;
 
 public interface IDanificar
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    //Define o recebimento de dano dos inimigos.
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    //Método feito para receber dano nos inimigos.
+    public void ReceberDano();
 }
