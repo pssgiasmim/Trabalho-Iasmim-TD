@@ -12,4 +12,19 @@ public class IceTower : TowerBase
         Dano = 8; //O valor do dano é de 8.
         TipoDeDano = "ice"; //O tipo de dano é gelo.
     }
-}
+
+    //Elaboração do ataque da Torre de Gelo
+    public override void Atacar(List<Enemy> enemiesInRange)
+    {
+        //
+        foreach (Enemy enemy in enemiesInRange)
+        {
+            //Se o tipo do inimigo for igual a fogo
+            if (enemy.enemyType == "fogo") //Esta torre só ataca inimigos do tipo fogo.
+            {
+                //O inimigo "pega" o dano.
+                enemy.PegarDano(Dano);
+            }
+        }
+    }
+}   
