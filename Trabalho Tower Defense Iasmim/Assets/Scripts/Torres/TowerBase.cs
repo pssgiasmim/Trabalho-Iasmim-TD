@@ -12,5 +12,9 @@ public class TowerBase : MonoBehaviour, IAtacavel
     public string TipoDeDano; //Variável do Tipo de dano da torre.
     private float UltimoAtaque; //Variável que registra o último ataque da torre.
 
-
+    //Método que tem como função atacar os inimigos.
+    public virtual void Atacar()
+    {
+        //Dentro dos scripts das torres especificas, estará o detalhamento.
+    }
 }
