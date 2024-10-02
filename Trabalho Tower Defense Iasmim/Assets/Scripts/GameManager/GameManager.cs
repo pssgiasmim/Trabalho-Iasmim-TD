@@ -27,11 +27,12 @@ public class GameManager : MonoBehaviour
         {
             //Acessar a lista de inimigos  e  "comparar" se o tipo dele é igual ao tipo que a torre ataca.
             List<EnemyBase> enemiesInRange = GetEnemiesInRange(tower);
+            //atacar o inimigo
             tower.Atacar(enemiesInRange);
         }
     }
 
-    //Verifica se o inimigo em perigo é do mesmo tipo do tipo que a torre ataca.
+    //Verifica se o inimigo em alcance, é do mesmo tipo do tipo que a torre ataca.
     List<EnemyBase>GetEnemiesInRange(TowerBase tower)
     {
         //Adicionando novos valores na lista de inimigos.
