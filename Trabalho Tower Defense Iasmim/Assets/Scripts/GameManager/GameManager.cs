@@ -4,15 +4,20 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    //A classe GameManager, gerencia tudo o que tem dentro do jogo.
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    [SerializeField] List<TowerBase> LugarDasTorres; //Lista das torres que são colocadas no mapa.
+    [SerializeField] List<EnemyBase> enemies; //Lista dos inimigos que estão no mapa.
+
+    [SerializeField] FireTower fireTower; //Variável que referencia a Torre de Fogo.
+    [SerializeField] IceTower iceTower; //Variável que referencia a Torre de Gelo.
+    [SerializeField] LightTower lightTower; //Variável que referencia a Torre de Luz.
+
+    [SerializeField] FireEnemy fireEnemy; //Variável que refencia o Inimigo de Fogo.
+    [SerializeField] IceEnemy iceEnemy; //Variável que refencia o Inimigo de Gelo.
+    [SerializeField] DarkEnemy darkEnemy; //Variável que refencia o Inimigo de Escuro.
+    [SerializeField] LightEnemy lightEnemy; //Variável que refencia o Inimigo de Luz.
+    [SerializeField] RockEnemy rockEnemy; //Variável que refencia o Inimigo de Pedra.
+
+
 }
