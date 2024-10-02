@@ -14,7 +14,7 @@ public class IceTower : TowerBase
     }
 
     //Elaboração do ataque da Torre de Gelo
-    public override void Atacar(List<Enemy> enemiesInRange)
+    public override void Atacar(List<EnemyBase> enemiesInRange)
     {
         //Para cada Inimigo em inimigoEmPerigo
         foreach (Enemy enemy in enemiesInRange)

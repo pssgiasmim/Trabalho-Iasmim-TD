@@ -14,7 +14,7 @@ public class FireTower : TowerBase
    }
 
     //Elaboração do ataque da Torre de Fogo.
-    public override void Atacar(List<Enemy>enemiesInRange)
+    public override void Atacar(List<EnemyBase>enemiesInRange)
     { 
         //Para cada inimigo em inimigoEmPerigo.
         foreach(Enemy enemy in enemiesInRange)

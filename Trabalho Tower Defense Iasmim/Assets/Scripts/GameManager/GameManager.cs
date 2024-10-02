@@ -13,11 +13,11 @@ public class GameManager : MonoBehaviour
     [SerializeField] IceTower iceTower; //Variável que referencia a Torre de Gelo.
     [SerializeField] LightTower lightTower; //Variável que referencia a Torre de Luz.
 
-    [SerializeField] FireEnemy fireEnemy; //Variável que refencia o Inimigo de Fogo.
-    [SerializeField] IceEnemy iceEnemy; //Variável que refencia o Inimigo de Gelo.
-    [SerializeField] DarkEnemy darkEnemy; //Variável que refencia o Inimigo de Escuro.
-    [SerializeField] LightEnemy lightEnemy; //Variável que refencia o Inimigo de Luz.
-    [SerializeField] RockEnemy rockEnemy; //Variável que refencia o Inimigo de Pedra.
+    [SerializeField] EnemyFire enemyFire; //Variável que refencia o Inimigo de Fogo.
+    [SerializeField] EnemyIce enemyIce; //Variável que refencia o Inimigo de Gelo.
+    [SerializeField] EnemyDark enemyDark; //Variável que refencia o Inimigo de Escuro.
+    [SerializeField] EnemyLight enemyLight; //Variável que refencia o Inimigo de Luz.
+    [SerializeField] EnemyRock enemyRock; //Variável que refencia o Inimigo de Pedra.
 
     //Método que identifica qual inimigo a torre vai atacar
     public void Update()
