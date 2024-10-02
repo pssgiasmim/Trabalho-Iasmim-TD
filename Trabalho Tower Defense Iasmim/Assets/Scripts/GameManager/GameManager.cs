@@ -25,11 +25,31 @@ public class GameManager : MonoBehaviour
         //Para cada torre em Lugar das Torres
         foreach (TowerBase tower in LugarDasTorres)
         {
-            //Acessar a lsta de inimigos  e  "comparar" se o tipo dele é igual ao tipo que a torre ataca.
+            //Acessar a lista de inimigos  e  "comparar" se o tipo dele é igual ao tipo que a torre ataca.
             List<EnemyBase> enemiesInRange = GetEnemiesInRange(tower);
             tower.Atacar(enemiesInRange);
         }
     }
 
+    //Verifica se o inimigo em perigo é do mesmo tipo do tipo que a torre ataca.
+    List<EnemyBase>GetEnemiesInRange(TowerBase tower)
+    {
+        //Adicionando novos valores na lista de inimigos.
+        List<EnemyBase> enemiesInRange = new List<EnemyBase>();
+
+        //Para cada inimigo em inimigos
+        foreach (EnemyBase enemy in enemies)
+        {
+            //Se a distancia de Vector3 que é a posição da torre e a posição do inimigo for menor ou igual a dano;
+            if (Vector3.Distance(tower.transform.position, enemy.transform.postion) <= tower.Alcance) 
+            {
+                //Então adcionada inimigos no alcance na lista inimigo
+                enemiesInRange.Add(enemy);
+            }
+        }
+
+        //retornando os inimigos em alcance
+        return enemiesInRange;
+    }
 
 }
