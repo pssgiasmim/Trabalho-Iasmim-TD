@@ -2,17 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyRock : MonoBehaviour
+public class EnemyRock : EnemyBase
 {
-    // Start is called before the first frame update
-    void Start()
+    //Método que referencia questões de inimigo rocha.
+    public void Start()
     {
-        
+        saude = 80; //quantidade de vidas de inimigo rocha.
+        tipoDeInimigo = "rocha"; //tipo do inimigo.
     }
+    
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    
 }
