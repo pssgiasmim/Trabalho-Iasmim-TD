@@ -2,17 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyBase : MonoBehaviour
+public class EnemyBase : MonoBehaviour, IAtacavel
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    //Classe representante dos inimigos.
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public int saude; //Variável que "conta" a vida do inimigo.
+    public string tipoDeInimigo; //Variável que vê qual é o tipo de inimigo.
+
 }
