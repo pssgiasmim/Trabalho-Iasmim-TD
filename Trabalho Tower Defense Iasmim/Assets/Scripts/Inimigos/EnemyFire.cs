@@ -2,17 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyFire : MonoBehaviour
+public class EnemyFire : EnemyBase
 {
-    // Start is called before the first frame update
-    void Start()
+    //Método que referencias questões do Inimigo Fogo
+    public void Start()
     {
-        
+        saude = 50; //Vida do inimigo fogo.
+        tipoDeInimigo = "fire"; //Tipo do inimigo.
     }
+        
+    
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    
 }
