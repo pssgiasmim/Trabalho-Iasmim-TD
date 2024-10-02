@@ -20,4 +20,10 @@ public class EnemyBase : MonoBehaviour, IAtacavel
             Morrer(); //chamando o método morrer.
         }
     }
+
+    //Método para destruir o inimigo
+    public void Morrer()
+    {
+        Destroy(gameObject); //Aqui o inimigo será removido
+    }
 }
