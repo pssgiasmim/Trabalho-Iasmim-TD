@@ -19,5 +19,17 @@ public class GameManager : MonoBehaviour
     [SerializeField] LightEnemy lightEnemy; //Variável que refencia o Inimigo de Luz.
     [SerializeField] RockEnemy rockEnemy; //Variável que refencia o Inimigo de Pedra.
 
+    //Método que identifica qual inimigo a torre vai atacar
+    public void Update()
+    {
+        //Para cada torre em Lugar das Torres
+        foreach (TowerBase tower in LugarDasTorres)
+        {
+            //Acessar a lsta de inimigos  e  "comparar" se o tipo dele é igual ao tipo que a torre ataca.
+            List<EnemyBase> enemiesInRange = GetEnemiesInRange(tower);
+            tower.Atacar(enemiesInRange);
+        }
+    }
+
 
 }
