@@ -8,7 +8,7 @@ public class EnemyFire : EnemyBase
     public void Start()
     {
         saude = 50; //Vida do inimigo fogo.
-        tipoDeInimigo = "fire"; //Tipo do inimigo.
+        tipoDeInimigo = "fogo"; //Tipo do inimigo.
     }
         
     
