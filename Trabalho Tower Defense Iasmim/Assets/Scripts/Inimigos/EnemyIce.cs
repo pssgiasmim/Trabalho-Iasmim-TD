@@ -2,17 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyIce : MonoBehaviour
+public class EnemyIce : EnemyBase
 {
-    // Start is called before the first frame update
-    void Start()
+    //Método que referencia questões de inimigo gelo
+    public void Start()
     {
-        
+        saude = 40; //Quantidade de vida do inimigo gelo.
+        tipoDeInimigo = "ice"; //O tipode do inimigo é ice.
     }
+        
+    
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    
 }
