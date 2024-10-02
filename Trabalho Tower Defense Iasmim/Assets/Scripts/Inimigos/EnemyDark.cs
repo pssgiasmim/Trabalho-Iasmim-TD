@@ -2,17 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyDark : MonoBehaviour
+public class EnemyDark : EnemyBase
 {
-    // Start is called before the first frame update
-    void Start()
+    //Método que referencia questões de inimigo escuro
+    public void Start()
     {
-        
+        saude = 60; //quantidade de vida do inimigo do tipo escuro.
+        tipoDeInimigo = "escuro"; //Tipo do inimigo.
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    
 }
