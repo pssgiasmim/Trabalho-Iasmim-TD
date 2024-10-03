@@ -42,7 +42,7 @@ public class GameManager : MonoBehaviour
         foreach (EnemyBase enemy in enemies)
         {
             //Se a distancia de Vector3 que é a posição da torre e a posição do inimigo for menor ou igual a dano;
-            if (Vector3.Distance(tower.transform.position, enemy.transform.postion) <= tower.Alcance) 
+            if (Vector3.Distance(tower.transform.position, enemy.transform.position) <= tower.Alcance) 
             {
                 //Então adcionada inimigos no alcance na lista inimigo
                 enemiesInRange.Add(enemy);

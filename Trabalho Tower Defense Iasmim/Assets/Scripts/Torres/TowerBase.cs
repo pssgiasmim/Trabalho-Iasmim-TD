@@ -13,7 +13,7 @@ public class TowerBase : MonoBehaviour, IAtacavel
     private float UltimoAtaque; //Variável que registra o último ataque da torre.
 
     //Método que tem como função atacar os inimigos.
-    public virtual void Atacar()
+    public virtual void Atacar(List<EnemyBase> enemiesInRange)
     {
         //Dentro dos scripts das torres especificas, estará o detalhamento.
     }

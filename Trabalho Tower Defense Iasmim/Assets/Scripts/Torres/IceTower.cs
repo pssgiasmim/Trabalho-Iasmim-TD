@@ -17,13 +17,13 @@ public class IceTower : TowerBase
     public override void Atacar(List<EnemyBase> enemiesInRange)
     {
         //Para cada Inimigo em inimigoEmPerigo
-        foreach (Enemy enemy in enemiesInRange)
+        foreach (EnemyBase enemy in enemiesInRange)
         {
             //Se o tipo do inimigo for igual a fogo
-            if (enemy.enemyType == "fogo") //Esta torre só ataca inimigos do tipo fogo.
+            if (enemy.tipoDeInimigo == "fogo") //Esta torre só ataca inimigos do tipo fogo.
             {
                 //O inimigo "pega" o dano.
-                enemy.PegarDano(Dano);
+                enemy.ReceberDano(Dano);
             }
         }
     }

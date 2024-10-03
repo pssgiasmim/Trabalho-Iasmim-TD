@@ -27,7 +27,7 @@ public class EnemyBase : MonoBehaviour, IAtacavel
         Destroy(gameObject); //Aqui o inimigo será removido
     }
 
-    public virtual void Atacar()
+    public virtual void Atacar(List<EnemyBase> enemiesInRange)
     {
         gameObject.SetActive(false);
     }

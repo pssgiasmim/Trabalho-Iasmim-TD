@@ -17,10 +17,10 @@ public class LightTower : TowerBase
     public override void Atacar(List<EnemyBase>enemiesInRange)
     {
         //Para cada Inimigo em inimigoEmPerigo
-        foreach(Enemy enemy in enemiesInRange)
+        foreach(EnemyBase enemy in enemiesInRange)
         {
             //Aqui ataca todos os inimigos.
-            enemy.PegarDano(Dano);
+            enemy.ReceberDano(Dano);
         }
     }
 

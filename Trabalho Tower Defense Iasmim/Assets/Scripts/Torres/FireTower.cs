@@ -17,13 +17,13 @@ public class FireTower : TowerBase
     public override void Atacar(List<EnemyBase>enemiesInRange)
     { 
         //Para cada inimigo em inimigoEmPerigo.
-        foreach(Enemy enemy in enemiesInRange)
+        foreach(EnemyBase enemy in enemiesInRange)
         {
             //Se o tipo do inimigo for igual a escuro.
-            if (enemy.enemyType == "escuro") //Esta torre só ataca inimigos do tipo escuro.
+            if (enemy.tipoDeInimigo == "escuro") //Esta torre só ataca inimigos do tipo escuro.
             {
                 //O inimigo "pega" o dano.
-                enemy.PegarDano(Dano);
+                enemy.ReceberDano(Dano);
             }
 
         }
