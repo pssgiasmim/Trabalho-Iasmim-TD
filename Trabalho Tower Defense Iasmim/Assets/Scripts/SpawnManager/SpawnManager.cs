@@ -11,17 +11,35 @@ public class SpawnManager : MonoBehaviour
     [SerializeField] GameObject EnemyLight; //Variável que armazena no inspector o EnemyLight.
     [SerializeField] GameObject EnemyRock; //Variável que armazena no inspector o EnemyRock                                        .
     float timer = 1.2f; //Variável que é um timer para saber o momento certo de começar a instanciar.
-    int TipoInimigo; //Variável que tem um inimigo aleatório que servirá como condição para instanciar.
-
+    int tipoInimigo; //Variável que tem um inimigo aleatório que servirá como condição para instanciar.
+    int spawnPlace; //Variável que tem um valor aleatório  que verá a posição de onde o inimigo será instanciado.
+    float y1, y2, y3; //Variáveis que irão armazenar as posições. X é 7.85 e Y é aleatório.
 
     //Método que vai Spawnar os inimigos na cena, em direção das torres.
     public void Spawn()
     {
         if (timer <= 0)
         {
-            TipoInimigo = Random.Range(0, 100); //Valor aleatório entre 0 e 100 que instanciará os inimigos.
+            spawnPlace = Random.Range(1, 4); //Valor aleatório entre 1 e 3 que "escolha" onde será instanciado os inimigos.
 
-            if (TipoInimigo > 50)
+            if (spawnPlace == 1)
+            {
+                y1 = 2.89f;
+            }
+
+            else if (spawnPlace == 2)
+            {
+                y2 = -0.23f;
+            }
+
+            else if (spawnPlace == 3)
+            {
+                y3 = -3.27f;
+            }
+
+            tipoInimigo = Random.Range(0, 100); //Valor aleatório entre 0 e 100 que instanciará os inimigos.
+
+            if (tipoInimigo > 50)
             {
 
             }
