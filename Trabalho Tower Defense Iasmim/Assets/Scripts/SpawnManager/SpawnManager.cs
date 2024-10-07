@@ -1,18 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
 using UnityEngine;
 
 public class SpawnManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    //Método que vai Spawnar os inimigos na cena, em direção das torres.
+    public void Spawn()
     {
-        
-    }
+        if (timer <= 0)
+        {
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        }
     }
 }
