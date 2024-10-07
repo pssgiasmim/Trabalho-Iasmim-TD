@@ -19,7 +19,12 @@ public class SpawnManager : MonoBehaviour
     {
         if (timer <= 0)
         {
+            TipoInimigo = Random.Range(0, 100); //Valor aleatório entre 0 e 100 que instanciará os inimigos.
 
+            if (TipoInimigo > 50)
+            {
+
+            }
         }
     }
 }
