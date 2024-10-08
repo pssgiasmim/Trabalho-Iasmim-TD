@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 /*A classe GameManager, gerencia tudo o que tem dentro do jogo. 
@@ -32,9 +33,21 @@ public class GameManager : MonoBehaviour
 
         while (inimigosAtivos < 10)
         {
-            SpawnManager.Spawn();
+            SpawnManager.instance.Spawn();
+            inimigosAtivos++;
 
+            AdicionarInimigos();
         }
+    }
+
+    //Método que adiciona os inimigos na lista
+    public void AdicionarInimigos()
+    {
+        enemies.Add(EnemyDark);
+        enemies.Add(EnemyFire);
+        enemies.Add(EnemyIce);
+        enemies.Add(EnemyLight);
+        enemies.Add(EnemyRock);
     }
 
     //Verifica se o inimigo em alcance, é do mesmo tipo do tipo que a torre ataca.
