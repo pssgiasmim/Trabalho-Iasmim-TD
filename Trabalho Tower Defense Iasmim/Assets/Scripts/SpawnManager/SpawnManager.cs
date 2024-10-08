@@ -12,7 +12,7 @@ public class SpawnManager : MonoBehaviour
     [SerializeField] GameObject EnemyDark; //Variável que armazena no inspector o EnemyDark.
     [SerializeField] GameObject EnemyLight; //Variável que armazena no inspector o EnemyLight.
     [SerializeField] GameObject EnemyRock; //Variável que armazena no inspector o EnemyRock                                        .
-    float timer = 1.2f; //Variável que é um timer para saber o momento certo de começar a instanciar.
+    float timer, initialTime = 1.2f; //Variável que é um timer para saber o momento certo de começar a instanciar.
     int tipoInimigo; //Variável que tem um inimigo aleatório que servirá como condição para instanciar.
     int spawnPlace; //Variável que tem um valor aleatório  que verá a posição de onde o inimigo será instanciado.
     float y; //Variáveis que irão armazenar as posições. X é 7.85 e Y é aleatório.
@@ -65,6 +65,19 @@ public class SpawnManager : MonoBehaviour
             {
                 Instantiate(EnemyLight, new Vector3(7.85f, y, 0), Quaternion.identity); 
             }
+
+            if (initialTime > 0.8f)
+            {
+                initialTime -= 0.05f;
+            }
+
+            timer = initialTime;
+
+        }
+
+        else
+        {
+            timer -= Time.deltaTime;
         }
     }
 
