@@ -17,6 +17,18 @@ public class SpawnManager : MonoBehaviour
     int spawnPlace; //Variável que tem um valor aleatório  que verá a posição de onde o inimigo será instanciado.
     float y; //Variáveis que irão armazenar as posições. X é 7.85 e Y é aleatório.
 
+    //Singleton, que permite que todas as coisas públicas da classe sejam acessadas por outra classe.
+    #region Singleton
+    public static SpawnManager instance;
+
+    private void Awake()
+    {
+        instance = this;
+    }
+    #endregion
+
+
+
     //Método que vai Spawnar os inimigos na cena, em direção das torres.
     public void Spawn()
     {
