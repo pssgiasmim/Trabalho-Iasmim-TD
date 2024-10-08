@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Threading;
 using UnityEngine;
 
+/* Está classe é responsável por spawnar os inimigos na direção das torres dentro do jogo.*/
+
 public class SpawnManager : MonoBehaviour
 {
     [SerializeField] GameObject EnemyFire; //Variável que armazena no inspector o EnemyFire.
@@ -20,48 +22,48 @@ public class SpawnManager : MonoBehaviour
     {
         if (timer <= 0)
         {
-            spawnPlace = Random.Range(1, 4); //Valor aleatório entre 1 e 3 que "escolha" onde será instanciado os inimigos.
+            spawnPlace = Random.Range(1, 4); 
 
-            if (spawnPlace == 1)
+            if (spawnPlace == 1) 
             {
-                y = 2.89f;
+                y = 2.89f; 
             }
 
-            else if (spawnPlace == 2)
+            else if (spawnPlace == 2) 
             {
-                y = -0.23f;
+                y = -0.23f; 
             }
 
-            else if (spawnPlace == 3)
+            else if (spawnPlace == 3) 
             {
-                y = -3.27f;
+                y = -3.27f; 
             }
 
-            tipoInimigo = Random.Range(0, 100); //Valor aleatório entre 0 e 100 que instanciará os inimigos.
+            tipoInimigo = Random.Range(0, 100); 
 
-            if (tipoInimigo > 70)
+            if (tipoInimigo > 70) 
             {
-                Instantiate(EnemyFire, new Vector3(7.85f, y, 0), Quaternion.identity);
+                Instantiate(EnemyFire, new Vector3(7.85f, y, 0), Quaternion.identity); 
             }
 
-            else if (tipoInimigo > 50)
+            else if (tipoInimigo > 50) 
             {
-                Instantiate(EnemyDark, new Vector3(7.85f, y, 0), Quaternion.identity);
+                Instantiate(EnemyDark, new Vector3(7.85f, y, 0), Quaternion.identity); 
             }
 
-            else if (tipoInimigo > 10)
+            else if (tipoInimigo > 10) 
             {
-                Instantiate(EnemyIce, new Vector3(7.85f, y, 0), Quaternion.identity);
+                Instantiate(EnemyIce, new Vector3(7.85f, y, 0), Quaternion.identity); 
             }
 
-            else if (tipoInimigo > 9)
+            else if (tipoInimigo > 9) 
             {
-                Instantiate(EnemyRock, new Vector3(7.85f, y, 0), Quaternion.identity);
+                Instantiate(EnemyRock, new Vector3(7.85f, y, 0), Quaternion.identity); 
             }
 
-            else if (tipoInimigo > 8)
+            else if (tipoInimigo > 8) 
             {
-                Instantiate(EnemyLight, new Vector3(7.85f, y, 0), Quaternion.identity);
+                Instantiate(EnemyLight, new Vector3(7.85f, y, 0), Quaternion.identity); 
             }
         }
     }
