@@ -14,13 +14,26 @@ public class GameManager : MonoBehaviour
     //Método que identifica qual inimigo a torre vai atacar
     public void Update()
     {
-       
+        GerenciarInimigo();
+
         foreach (TowerBase tower in LugarDasTorres)
         {
             
             List<EnemyBase> enemiesInRange = GetEnemiesInRange(tower);
             
             tower.Atacar(enemiesInRange);
+        }
+    }
+
+    //Gerencia uma certa quantidade de inimigos na cena, não permintindo que passem de 10.
+    public void GerenciarInimigo()
+    {
+        int inimigosAtivos = enemies.Count; //Variável que recebe como valor um contador de inimigos.
+
+        while (inimigosAtivos < 10)
+        {
+            SpawnManager.Spawn();
+
         }
     }
 
