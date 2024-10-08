@@ -39,9 +39,29 @@ public class SpawnManager : MonoBehaviour
 
             tipoInimigo = Random.Range(0, 100); //Valor aleatório entre 0 e 100 que instanciará os inimigos.
 
-            if (tipoInimigo > 50)
+            if (tipoInimigo > 70)
             {
+                Instantiate(EnemyFire, new Vector3(7.85f, y, 0), Quaternion.identity);
+            }
 
+            else if (tipoInimigo > 50)
+            {
+                Instantiate(EnemyDark, new Vector3(7.85f, y, 0), Quaternion.identity);
+            }
+
+            else if (tipoInimigo > 10)
+            {
+                Instantiate(EnemyIce, new Vector3(7.85f, y, 0), Quaternion.identity);
+            }
+
+            else if (tipoInimigo > 9)
+            {
+                Instantiate(EnemyRock, new Vector3(7.85f, y, 0), Quaternion.identity);
+            }
+
+            else if (tipoInimigo > 8)
+            {
+                Instantiate(EnemyLight, new Vector3(7.85f, y, 0), Quaternion.identity);
             }
         }
     }
