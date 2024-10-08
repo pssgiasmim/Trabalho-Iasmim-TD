@@ -751,14 +751,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   LugarDasTorres: []
   enemies: []
-  fireTower: {fileID: 0}
-  iceTower: {fileID: 0}
-  lightTower: {fileID: 0}
-  enemyFire: {fileID: 614755212720385688, guid: fedafb7e1abb00447a97d34c66be2da3, type: 3}
-  enemyIce: {fileID: 723019557910126682, guid: e009143e22606cc49b36b5f026c9d70f, type: 3}
-  enemyDark: {fileID: 5043012689880711487, guid: 7c17a2f9fdfd1b34db53cb893fd42d84, type: 3}
-  enemyLight: {fileID: 2541948384910810173, guid: dcc5632189364fa47a7a10497d034cef, type: 3}
-  enemyRock: {fileID: 2466666898033390420, guid: 9436af2f8598a0f48a9b76317a666b0e, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
