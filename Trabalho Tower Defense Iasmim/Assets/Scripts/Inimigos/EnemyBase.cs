@@ -39,7 +39,7 @@ public class EnemyBase : MonoBehaviour, IAtacavel
     //Método que faz os inimigos se moverem no mapa.
     public void Update()
     {
-        rigidbody2D.velocity = new Vector2(-1, 2);
+        rigidbody2D.velocity = new Vector2(-1, 0);
     }
 
 }

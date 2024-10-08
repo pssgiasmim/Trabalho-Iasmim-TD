@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3530972458466059193}
   - component: {fileID: 5993775181553488533}
   - component: {fileID: 5043012689880711487}
+  - component: {fileID: -6847657819521085695}
   m_Layer: 0
   m_Name: InimigoEscuro
   m_TagString: Untagged
@@ -145,3 +146,32 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   saude: 0
   tipoDeInimigo: 
+  speed: 0
+  rigidbody2D: {fileID: -6847657819521085695}
+--- !u!50 &-6847657819521085695
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 778075367578910751}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0

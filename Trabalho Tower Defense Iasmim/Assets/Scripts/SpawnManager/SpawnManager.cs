@@ -82,7 +82,7 @@ public class SpawnManager : MonoBehaviour
     }
 
     //Método que ativa o método Spawn
-    public void Start()
+    public void Update()
     {
         Spawn();
     }
