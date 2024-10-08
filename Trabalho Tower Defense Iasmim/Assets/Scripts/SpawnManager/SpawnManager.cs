@@ -67,4 +67,9 @@ public class SpawnManager : MonoBehaviour
             }
         }
     }
+
+    public void Start()
+    {
+        Spawn();
+    }
 }
