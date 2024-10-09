@@ -44,12 +44,12 @@ public class GameManager : MonoBehaviour
     //Gerencia uma certa quantidade de inimigos na cena, não permintindo que passem de 10.
     public void GerenciarInimigo()
     {
-        int inimigosAtivos = enemies.Count; //Variável que recebe como valor um contador de inimigos.
+        //int inimigosAtivos = enemies.Count; //Variável que recebe como valor um contador de inimigos.
 
-        while (inimigosAtivos < 10)
+        while (enemies.Count < 10)
         {
             SpawnManager.instance.Spawn();
-            inimigosAtivos++;
+            
 
            
         }
