@@ -65,10 +65,15 @@ public class TowerPlace : MonoBehaviour
         //Botões [1], [2] e [3] alternam os tipos de torre. No keyPad
         if (Input.GetKeyDown(KeyCode.Keypad1))
         {
-
+            currentTipoTorre = TipoTorre.Fire;
         }
-       
+        else if (Input.GetKeyDown(KeyCode.Keypad2))
+        {
+            currentTipoTorre = TipoTorre.Ice;
+        }
+        else if (Input.GetKeyDown(KeyCode.Keypad3))
+        {
+            currentTipoTorre = TipoTorre.Light;
+        }
     }
-
-    
 }
