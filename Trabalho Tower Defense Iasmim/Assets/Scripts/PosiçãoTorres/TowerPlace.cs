@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 //Classe que faz com que o jogador escolha onde posicionar as torres.
@@ -30,9 +31,10 @@ public class TowerPlace : MonoBehaviour
     //Método que detecta o clique do mouse.
     public void Update()
     {
+        Vector3 mousePosition = Input.mousePosition; //Variável que recebe a posição do mouse.
         if (Input.GetMouseButtonDown(0))
         {
-            Vector3 mousePosition = Input.mousePosition; //Variável que recebe a posição do mouse.
+            
             mousePosition = mainCamera.ScreenToWorldPoint(mousePosition);
             mousePosition.z = 0; // Define a posição z para 0 em 2D.
 
@@ -40,5 +42,28 @@ public class TowerPlace : MonoBehaviour
             Instantiate(iceTowerPrefab, mousePosition, Quaternion.identity);
             Instantiate(lightTowerPrefab, mousePosition, Quaternion.identity);
         }
+
+        switch (currentTipoTorre)
+        {
+            case TipoTorre.Fire:
+
+                Instantiate(fireTowerPrefab, mousePosition, Quaternion.identity);
+
+            break;
+
+            case TipoTorre.Ice:
+
+                Instantiate(iceTowerPrefab, mousePosition, Quaternion. identity);
+
+            break;
+
+            case TipoTorre.Light:
+
+                Instantiate(lightTowerPrefab, mousePosition, Quaternion.identity);
+
+            break;
+        }
     }
+
+    
 }
