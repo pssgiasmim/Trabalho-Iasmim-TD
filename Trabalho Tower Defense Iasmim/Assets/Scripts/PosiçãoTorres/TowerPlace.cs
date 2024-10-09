@@ -2,17 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//Classe que faz com que o jogador escolha onde posicionar as torres.
 public class TowerPlace : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public GameObject towerPrefab; //Variável do prefab da torre.
+    private Camera mainCamera; //Variável que faz com que a camerâ "acompanhe" do jogador.
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+
 }
