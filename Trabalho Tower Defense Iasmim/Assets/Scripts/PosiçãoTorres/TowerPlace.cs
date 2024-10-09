@@ -31,38 +31,43 @@ public class TowerPlace : MonoBehaviour
     //Método que detecta o clique do mouse.
     public void Update()
     {
-        Vector3 mousePosition = Input.mousePosition; //Variável que recebe a posição do mouse.
+        //Detecta o clique do mouse
         if (Input.GetMouseButtonDown(0))
         {
-            
+            Vector3 mousePosition = Input.mousePosition; //Variável que recebe a posição do mouse.
             mousePosition = mainCamera.ScreenToWorldPoint(mousePosition);
             mousePosition.z = 0; // Define a posição z para 0 em 2D.
 
-            Instantiate(fireTowerPrefab, mousePosition, Quaternion.identity);
-            Instantiate(iceTowerPrefab, mousePosition, Quaternion.identity);
-            Instantiate(lightTowerPrefab, mousePosition, Quaternion.identity);
+            //Instancia a torre com base no que foi selecionado.
+            switch (currentTipoTorre)
+            {
+                case TipoTorre.Fire:
+
+                    Instantiate(fireTowerPrefab, mousePosition, Quaternion.identity);
+
+                break;
+
+                case TipoTorre.Ice:
+
+                    Instantiate(iceTowerPrefab, mousePosition, Quaternion.identity);
+
+                break;
+
+                case TipoTorre.Light:
+
+                    Instantiate(lightTowerPrefab, mousePosition, Quaternion.identity);
+
+                break;
+            }
         }
 
-        switch (currentTipoTorre)
+        //Botões que selecionam a torre.
+        //Botões [1], [2] e [3] alternam os tipos de torre. No keyPad
+        if (Input.GetKeyDown(KeyCode.Keypad1))
         {
-            case TipoTorre.Fire:
 
-                Instantiate(fireTowerPrefab, mousePosition, Quaternion.identity);
-
-            break;
-
-            case TipoTorre.Ice:
-
-                Instantiate(iceTowerPrefab, mousePosition, Quaternion. identity);
-
-            break;
-
-            case TipoTorre.Light:
-
-                Instantiate(lightTowerPrefab, mousePosition, Quaternion.identity);
-
-            break;
         }
+       
     }
 
     
