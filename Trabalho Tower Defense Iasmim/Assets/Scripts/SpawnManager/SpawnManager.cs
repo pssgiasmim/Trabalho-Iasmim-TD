@@ -55,27 +55,32 @@ public class SpawnManager : MonoBehaviour
 
             if (tipoInimigo > 70) 
             {
-                Instantiate(EnemyFire, new Vector3(7.85f, y, 0), Quaternion.identity); 
+               GameObject obj = Instantiate(EnemyFire, new Vector3(7.85f, y, 0), Quaternion.identity);
+               GameManager.instance.AdicionarInimigos(obj);
             }
 
             else if (tipoInimigo > 50) 
             {
-                Instantiate(EnemyDark, new Vector3(7.85f, y, 0), Quaternion.identity); 
+                GameObject obj = Instantiate(EnemyDark, new Vector3(7.85f, y, 0), Quaternion.identity);
+                GameManager.instance.AdicionarInimigos(obj);
             }
 
             else if (tipoInimigo > 10) 
             {
-                Instantiate(EnemyIce, new Vector3(7.85f, y, 0), Quaternion.identity); 
+                GameObject obj = Instantiate(EnemyIce, new Vector3(7.85f, y, 0), Quaternion.identity);
+                GameManager.instance.AdicionarInimigos(obj);
             }
 
             else if (tipoInimigo > 9) 
             {
-                Instantiate(EnemyRock, new Vector3(7.85f, y, 0), Quaternion.identity); 
+                GameObject obj = Instantiate(EnemyRock, new Vector3(7.85f, y, 0), Quaternion.identity);
+                GameManager.instance.AdicionarInimigos(obj);
             }
 
             else if (tipoInimigo > 8) 
             {
-                Instantiate(EnemyLight, new Vector3(7.85f, y, 0), Quaternion.identity); 
+                GameObject obj = Instantiate(EnemyLight, new Vector3(7.85f, y, 0), Quaternion.identity);
+                GameManager.instance.AdicionarInimigos(obj);
             }
 
             if (initialTime > 0.8f)
