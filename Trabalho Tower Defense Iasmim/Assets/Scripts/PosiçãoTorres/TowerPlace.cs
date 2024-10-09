@@ -16,6 +16,17 @@ public class TowerPlace : MonoBehaviour
         mainCamera = Camera.main;
     }
 
+    //Método que identifica os membros da numeração, que no caso são as identificações das torres.
+    private enum TipoTorre
+    {
+        Fire,
+        Ice,
+        Light
+    }
+
+    //Especifica o tipo de torre padrão
+    private TipoTorre currentTipoTorre = TipoTorre.Fire;
+
     //Método que detecta o clique do mouse.
     public void Update()
     {
