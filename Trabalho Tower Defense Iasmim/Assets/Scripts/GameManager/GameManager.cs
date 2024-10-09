@@ -9,7 +9,7 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     [SerializeField] List<TowerBase> LugarDasTorres = new List<TowerBase>(); //Lista das torres que são colocadas no mapa.
-    [SerializeField] List<EnemyBase> enemies = new List<EnemyBase>(); //Lista dos inimigos que estão no mapa.
+    [SerializeField] List<GameObject> enemies = new List<GameObject>(); //Lista dos inimigos que estão no mapa.
 
     [SerializeField] EnemyDark enemyDark; //Variável que será acrescentada na lista EnemyBase, que é o inimigo do escuro.
     [SerializeField] EnemyFire enemyFire; //Variável que será acrescentada na lista EnemyBase, que é o inimigo de fogo.
@@ -17,6 +17,15 @@ public class GameManager : MonoBehaviour
     [SerializeField] EnemyLight enemyLight; //Variável que será acrescentada na lista EnemyBase, que é o inimigo de luz.
     [SerializeField] EnemyRock enemyRock; //Variável que será acrescentada na lista EnemyBase, que é o inimigo de pedra.
 
+    //Singleton, que permite que todas as coisas públicas da classe sejam acessadas por outra classe.
+    #region Singleton
+    public static GameManager instance;
+
+    private void Awake()
+    {
+        instance = this;
+    }
+    #endregion
 
     //Método que identifica qual inimigo a torre vai atacar
     public void Update()
@@ -42,18 +51,15 @@ public class GameManager : MonoBehaviour
             SpawnManager.instance.Spawn();
             inimigosAtivos++;
 
-            AdicionarInimigos();
+           
         }
     }
 
     //Método que adiciona os inimigos na lista
-    public void AdicionarInimigos()
+    public void AdicionarInimigos(GameObject obj)
     {
-        enemies.Add(enemyDark);
-        enemies.Add(enemyFire);
-        enemies.Add(enemyIce);
-        enemies.Add(enemyLight);
-        enemies.Add(enemyRock);
+        enemies.Add(obj);
+        
     }
 
     //Verifica se o inimigo em alcance, é do mesmo tipo do tipo que a torre ataca.
@@ -63,13 +69,13 @@ public class GameManager : MonoBehaviour
         List<EnemyBase> enemiesInRange = new List<EnemyBase>();
 
         
-        foreach (EnemyBase enemy in enemies)
+        foreach (GameObject enemy in enemies)
         {
             
             if (Vector3.Distance(tower.transform.position, enemy.transform.position) <= tower.Alcance) 
             {
                 
-                enemiesInRange.Add(enemy);
+                //enemiesInRange.Add(enemy);
             }
         }
 
