@@ -9,7 +9,7 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     [SerializeField] List<TowerBase> LugarDasTorres = new List<TowerBase>(); //Lista das torres que são colocadas no mapa.
-    [SerializeField] List<GameObject> enemies = new List<GameObject>(); //Lista dos inimigos que estão no mapa.
+    public List<GameObject> enemies = new List<GameObject>(); //Lista dos inimigos que estão no mapa.
 
     [SerializeField] EnemyDark enemyDark; //Variável que será acrescentada na lista EnemyBase, que é o inimigo do escuro.
     [SerializeField] EnemyFire enemyFire; //Variável que será acrescentada na lista EnemyBase, que é o inimigo de fogo.
@@ -30,7 +30,7 @@ public class GameManager : MonoBehaviour
     //Método que identifica qual inimigo a torre vai atacar
     public void Update()
     {
-        GerenciarInimigo();
+        
 
         foreach (TowerBase tower in LugarDasTorres)
         {
@@ -41,7 +41,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    //Gerencia uma certa quantidade de inimigos na cena, não permintindo que passem de 10.
+    /*//Gerencia uma certa quantidade de inimigos na cena, não permintindo que passem de 10.
     public void GerenciarInimigo()
     {
         //int inimigosAtivos = enemies.Count; //Variável que recebe como valor um contador de inimigos.
@@ -53,7 +53,7 @@ public class GameManager : MonoBehaviour
 
            
         }
-    }
+    }*/
 
     //Método que adiciona os inimigos na lista
     public void AdicionarInimigos(GameObject obj)

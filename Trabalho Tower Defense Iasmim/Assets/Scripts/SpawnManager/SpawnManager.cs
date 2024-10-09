@@ -34,68 +34,72 @@ public class SpawnManager : MonoBehaviour
     {
         if (timer <= 0)
         {
-            spawnPlace = Random.Range(1, 4); 
-
-            if (spawnPlace == 1) 
+            if (GameManager.instance.enemies.Count < 10)
             {
-                y = 2.89f; 
+                spawnPlace = Random.Range(1, 4);
+
+                if (spawnPlace == 1)
+                {
+                    y = 2.89f;
+                }
+
+                else if (spawnPlace == 2)
+                {
+                    y = -0.23f;
+                }
+
+                else if (spawnPlace == 3)
+                {
+                    y = -3.27f;
+                }
+
+                tipoInimigo = Random.Range(0, 100);
+
+                if (tipoInimigo > 70)
+                {
+                    GameObject obj = Instantiate(EnemyFire, new Vector3(7.85f, y, 0), Quaternion.identity);
+                    GameManager.instance.AdicionarInimigos(obj);
+                }
+
+                else if (tipoInimigo > 50)
+                {
+                    GameObject obj = Instantiate(EnemyDark, new Vector3(7.85f, y, 0), Quaternion.identity);
+                    GameManager.instance.AdicionarInimigos(obj);
+                }
+
+                else if (tipoInimigo > 10)
+                {
+                    GameObject obj = Instantiate(EnemyIce, new Vector3(7.85f, y, 0), Quaternion.identity);
+                    GameManager.instance.AdicionarInimigos(obj);
+                }
+
+                else if (tipoInimigo > 9)
+                {
+                    GameObject obj = Instantiate(EnemyRock, new Vector3(7.85f, y, 0), Quaternion.identity);
+                    GameManager.instance.AdicionarInimigos(obj);
+                }
+
+                else if (tipoInimigo > 8)
+                {
+                    GameObject obj = Instantiate(EnemyLight, new Vector3(7.85f, y, 0), Quaternion.identity);
+                    GameManager.instance.AdicionarInimigos(obj);
+                }
+
+                if (initialTime > 0.8f)
+                {
+                    initialTime -= 0.05f;
+                }
+
+                timer = initialTime;
             }
 
-            else if (spawnPlace == 2) 
+            else
             {
-                y = -0.23f; 
+                timer -= Time.deltaTime;
             }
-
-            else if (spawnPlace == 3) 
-            {
-                y = -3.27f; 
-            }
-
-            tipoInimigo = Random.Range(0, 100); 
-
-            if (tipoInimigo > 70) 
-            {
-               GameObject obj = Instantiate(EnemyFire, new Vector3(7.85f, y, 0), Quaternion.identity);
-               GameManager.instance.AdicionarInimigos(obj);
-            }
-
-            else if (tipoInimigo > 50) 
-            {
-                GameObject obj = Instantiate(EnemyDark, new Vector3(7.85f, y, 0), Quaternion.identity);
-                GameManager.instance.AdicionarInimigos(obj);
-            }
-
-            else if (tipoInimigo > 10) 
-            {
-                GameObject obj = Instantiate(EnemyIce, new Vector3(7.85f, y, 0), Quaternion.identity);
-                GameManager.instance.AdicionarInimigos(obj);
-            }
-
-            else if (tipoInimigo > 9) 
-            {
-                GameObject obj = Instantiate(EnemyRock, new Vector3(7.85f, y, 0), Quaternion.identity);
-                GameManager.instance.AdicionarInimigos(obj);
-            }
-
-            else if (tipoInimigo > 8) 
-            {
-                GameObject obj = Instantiate(EnemyLight, new Vector3(7.85f, y, 0), Quaternion.identity);
-                GameManager.instance.AdicionarInimigos(obj);
-            }
-
-            if (initialTime > 0.8f)
-            {
-                initialTime -= 0.05f;
-            }
-
-            timer = initialTime;
-
         }
 
-        else
-        {
-            timer -= Time.deltaTime;
-        }
+       
     }
 
     //Método que ativa o método Spawn
