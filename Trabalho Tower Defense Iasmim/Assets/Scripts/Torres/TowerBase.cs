@@ -39,12 +39,24 @@ public class TowerBase : MonoBehaviour, IAtacavel
                     dano = 1;
                 }
 
-                DispararBola(dano, enemy);
+                DispararBomba(dano, enemy);
 
                 break;
             }
 
             UltimoAtaque = Time.time;
         }
+    }
+
+    //Método para fazer a torre disparar a bomba.
+    void DispararBomba(int dano, EnemyBase enemy)
+    {
+        GameObject bomba = Instantiate(bombaPrefab, pontoDeTiro.position, Quaternion.identity); //Variável da bomba que recebe o instanciamente do prefab da bomba.
+
+        Bomba.bombaScript = bomba.GetComponent<Bomba>();
+
+        bombaScript.SetDano(dano);
+
+        bombaScript.SetTarget(enemy.GameObject);
     }
 }
