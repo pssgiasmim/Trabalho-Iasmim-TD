@@ -31,7 +31,8 @@ Transform:
   m_LocalPosition: {x: -4.26, y: 2.89, z: 0}
   m_LocalScale: {x: 2.4947112, y: 2.5188923, z: 2.5188923}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 3700828587726337809}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &8599157057170320284
@@ -147,3 +148,37 @@ MonoBehaviour:
   Alcance: 0
   Dano: 0
   TipoDeDano: 
+  UltimoAtaque: 0
+  bombaPrefab: {fileID: 0}
+  pontoDeTiro: {fileID: 0}
+--- !u!1 &2861041802646206057
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3700828587726337809}
+  m_Layer: 0
+  m_Name: pontoDeTiro
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3700828587726337809
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2861041802646206057}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.07, y: 0.00000009465216, z: 0}
+  m_LocalScale: {x: 0.400848, y: 0.39699993, z: 0.39699993}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7498507728419153031}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
