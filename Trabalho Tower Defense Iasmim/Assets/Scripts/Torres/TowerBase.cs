@@ -53,10 +53,10 @@ public class TowerBase : MonoBehaviour, IAtacavel
     {
         GameObject bomba = Instantiate(bombaPrefab, pontoDeTiro.position, Quaternion.identity); //Variável da bomba que recebe o instanciamente do prefab da bomba.
 
-        Bomba.bombaScript = bomba.GetComponent<Bomba>();
+        Bomba bombaScript = bomba.GetComponent<Bomba>();
 
         bombaScript.DefinirDano(dano);
 
-        bombaScript.DefinirAlvo(enemy.GameObject);
+        bombaScript.DefinirAlvo(enemy.gameObject);
     }
 }
