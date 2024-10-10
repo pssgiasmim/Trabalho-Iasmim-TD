@@ -7,8 +7,7 @@ public class EnemyIce : EnemyBase
     //Método que referencia questões de inimigo gelo
     public void Start()
     {
-        saude = 40; //Quantidade de vida do inimigo gelo.
-        tipoDeInimigo = "gelo"; //O tipode do inimigo é ice.
+        
     }
         
     

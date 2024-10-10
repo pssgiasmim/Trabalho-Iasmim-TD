@@ -15,21 +15,41 @@ public class TowerBase : MonoBehaviour, IAtacavel
     public Transform pontoDeTiro; //Variável do ponto de onde a bomba vai ser disparada.
 
     
-    //Método que tem como função atacar os inimigos.
-    public virtual void Atacar(List<EnemyBase> enemiesInRange)
+
+    //Método que verifica se os inimigos estão perto das torres
+    public void OnTriggerEnter2D(Collider2D other)
     {
+        if (other.CompareTag("Inimigo"))
+        {
+            Atacar(other.GetComponent<EnemyBase>());
+        }
+    }
+
+    //Método que verifica se os inimigos estão longe da torre
+    public void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.CompareTag("Inimigo"))
+        {
+
+        }
+    }
+
+    //Método que tem como função atacar os inimigos.
+    public virtual void Atacar(EnemyBase enemiesInRange)
+    {
+       
         if (Time.time >= UltimoAtaque + TaxaDeAtaque)
         {
-            foreach (EnemyBase enemy in enemiesInRange)
-            {
+            
+            
                 int dano = Dano; //Variável dano que recebe o valor de Dano.
 
-                if (enemy.tipoDeInimigo == "Dark" && this is FireTower)
+                if (enemiesInRange.tipoDeInimigo== "Dark" && this is FireTower)
                 {
                     dano *= 2;
                 }
 
-                else if (enemy.tipoDeInimigo == "Fire" && this is IceTower)
+                else if (enemiesInRange.tipoDeInimigo == "Fire" && this is IceTower)
                 {
                     dano *= 2;
                 }
@@ -39,10 +59,10 @@ public class TowerBase : MonoBehaviour, IAtacavel
                     dano = 1;
                 }
 
-                DispararBomba(dano, enemy);
+                DispararBomba(dano, enemiesInRange);
 
-                break;
-            }
+                
+            
 
             UltimoAtaque = Time.time;
         }
