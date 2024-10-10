@@ -7,13 +7,10 @@ public class LightTower : TowerBase
     //Método responsável por organizar informações de LightTower
     public void Start()
     {
-        TaxaDeAtaque = 0.5f; //A taxa de ataque é de 0.5f
-        Alcance = 6.0f; //O alcance/distância é de 6f
-        Dano = 15; //O valor do dano é 15
-        TipoDeDano = "light"; //O tipo de dano é luz
+        
     }
 
-    //Elaboração do ataque da Torre de Luz
+    /*/Elaboração do ataque da Torre de Luz
     public override void Atacar(List<EnemyBase>enemiesInRange)
     {
         //Para cada Inimigo em inimigoEmPerigo
@@ -22,6 +19,6 @@ public class LightTower : TowerBase
             //Aqui ataca todos os inimigos.
             enemy.ReceberDano(Dano);
         }
-    }
+    }*/
 
 }

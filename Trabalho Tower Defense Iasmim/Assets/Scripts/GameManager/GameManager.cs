@@ -75,7 +75,7 @@ public class GameManager : MonoBehaviour
             if (Vector3.Distance(tower.transform.position, enemy.transform.position) <= tower.Alcance) 
             {
                 
-                //enemiesInRange.Add(enemy);
+                enemiesInRange.Add(enemy.GetComponent<EnemyBase>());
             }
         }
 

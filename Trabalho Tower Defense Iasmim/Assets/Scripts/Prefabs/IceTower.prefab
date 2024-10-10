@@ -144,13 +144,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 090cc07d787335246a67b1cba3e836a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TaxaDeAtaque: 0
-  Alcance: 0
-  Dano: 0
-  TipoDeDano: 
+  TaxaDeAtaque: 1.5
+  Alcance: 4
+  Dano: 8
+  TipoDeDano: ice
   UltimoAtaque: 0
-  bombaPrefab: {fileID: 0}
-  pontoDeTiro: {fileID: 0}
+  bombaPrefab: {fileID: 6770059353786193367, guid: ac66dfac4c2d234418bf734fa6018083, type: 3}
+  pontoDeTiro: {fileID: 2939397052631767382}
 --- !u!1 &5802780407063375677
 GameObject:
   m_ObjectHideFlags: 0

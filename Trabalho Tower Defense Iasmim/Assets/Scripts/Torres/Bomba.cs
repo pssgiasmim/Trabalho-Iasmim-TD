@@ -25,7 +25,7 @@ public class Bomba : MonoBehaviour
     //Método que faz a bomba ir em direção de um inimigo.
     private void Update()
     {
-        if (alvo! == null)
+        if (alvo != null)
         {
             Vector2 direction = (alvo.transform.position - transform.position);
             transform.position += (Vector3)direction * velocidade * Time.deltaTime;
