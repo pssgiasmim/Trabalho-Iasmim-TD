@@ -31,7 +31,8 @@ Transform:
   m_LocalPosition: {x: -4.26, y: 2.89, z: 0}
   m_LocalScale: {x: 2.4947112, y: 2.5188923, z: 2.5188923}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 3700828587726337809}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &8599157057170320284
@@ -118,7 +119,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.04, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -129,7 +130,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.28, y: 1.28}
+  m_Size: {x: 3.11, y: 1.31}
   m_EdgeRadius: 0
 --- !u!114 &8921862465953932425
 MonoBehaviour:
@@ -143,7 +144,41 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3bb1eb34badfd084fabc5102c998720a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TaxaDeAtaque: 0
-  Alcance: 0
-  Dano: 0
-  TipoDeDano: 
+  TaxaDeAtaque: 1
+  Alcance: 5
+  Dano: 10
+  TipoDeDano: fire
+  UltimoAtaque: 0
+  bombaPrefab: {fileID: 6770059353786193367, guid: ac66dfac4c2d234418bf734fa6018083, type: 3}
+  pontoDeTiro: {fileID: 3700828587726337809}
+--- !u!1 &2861041802646206057
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3700828587726337809}
+  m_Layer: 0
+  m_Name: pontoDeTiro
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3700828587726337809
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2861041802646206057}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.07, y: 0.00000009465216, z: 0}
+  m_LocalScale: {x: 0.400848, y: 0.39699993, z: 0.39699993}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7498507728419153031}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

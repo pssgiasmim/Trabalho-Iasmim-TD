@@ -31,7 +31,7 @@ public class EnemyBase : MonoBehaviour, IAtacavel
     }
 
     //Método que faz os inimigos atacarem as torres.
-    public virtual void Atacar(List<EnemyBase> enemiesInRange)
+    public virtual void Atacar(EnemyBase enemiesInRange)
     {
         gameObject.SetActive(false);
     }
