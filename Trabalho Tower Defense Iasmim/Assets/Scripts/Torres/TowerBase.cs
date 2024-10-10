@@ -55,8 +55,8 @@ public class TowerBase : MonoBehaviour, IAtacavel
 
         Bomba.bombaScript = bomba.GetComponent<Bomba>();
 
-        bombaScript.SetDano(dano);
+        bombaScript.DefinirDano(dano);
 
-        bombaScript.SetTarget(enemy.GameObject);
+        bombaScript.DefinirAlvo(enemy.GameObject);
     }
 }
