@@ -46,7 +46,7 @@ public class GameManager : MonoBehaviour
     {
         //int inimigosAtivos = enemies.Count; //Variável que recebe como valor um contador de inimigos.
 
-        while (enemies.Count < 10)
+        while (enemies.Count < 25)
         {
             SpawnManager.instance.Spawn();
             
