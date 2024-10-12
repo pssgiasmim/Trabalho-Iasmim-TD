@@ -10,20 +10,7 @@ public class FireTower : TowerBase
         
    }
 
-    //Elaboração do ataque da Torre de Fogo.
-    /*public override void Atacar(List<EnemyBase>enemiesInRange)
-    { 
-        //Para cada inimigo em inimigoEmPerigo.
-        foreach(EnemyBase enemy in enemiesInRange)
-        {
-            //Se o tipo do inimigo for igual a escuro.
-            if (enemy.tipoDeInimigo == "escuro") //Esta torre só ataca inimigos do tipo escuro.
-            {
-                //O inimigo "pega" o dano.
-                enemy.ReceberDano(Dano);
-            }
-
-        }*/
+    
 
 }
-   
+
