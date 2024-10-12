@@ -27,19 +27,6 @@ public class GameManager : MonoBehaviour
     }
     #endregion
 
-    /*/Método que identifica qual inimigo a torre vai atacar
-    public void Update()
-    {
-        
-
-        foreach (TowerBase tower in LugarDasTorres)
-        {
-            
-            EnemyBase enemiesInRange = GetEnemiesInRange(tower);
-            
-            tower.Atacar(enemiesInRange);
-        }
-    }*/
 
     //Gerencia uma certa quantidade de inimigos na cena, não permintindo que passem de 10.
     public void GerenciarInimigo()
@@ -62,25 +49,6 @@ public class GameManager : MonoBehaviour
         
     }
 
-    /*/Verifica se o inimigo em alcance, é do mesmo tipo do tipo que a torre ataca.
-    EnemyBase GetEnemiesInRange(TowerBase tower)
-    {
-        //Adicionando novos valores na lista de inimigos.
-        List<EnemyBase> enemiesInRange = new List<EnemyBase>();
-
-        
-        foreach (GameObject enemy in enemies)
-        {
-            
-            if (Vector3.Distance(tower.transform.position, enemy.transform.position) <= tower.Alcance) 
-            {
-                
-                enemiesInRange.Add(enemy.GetComponent<EnemyBase>());
-            }
-        }
-
-        
-        return enemiesInRange;
-    }*/
+    
 
 }
