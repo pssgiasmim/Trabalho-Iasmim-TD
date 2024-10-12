@@ -149,7 +149,7 @@ MonoBehaviour:
   Dano: 8
   TipoDeDano: ice
   UltimoAtaque: 0
-  bombaPrefab: {fileID: 6770059353786193367, guid: ac66dfac4c2d234418bf734fa6018083, type: 3}
+  bombaPrefab: {fileID: 1566426760609450012, guid: d6de18f0400b0624dbd3fb2843349548, type: 3}
   pontoDeTiro: {fileID: 2939397052631767382}
 --- !u!1 &5802780407063375677
 GameObject:

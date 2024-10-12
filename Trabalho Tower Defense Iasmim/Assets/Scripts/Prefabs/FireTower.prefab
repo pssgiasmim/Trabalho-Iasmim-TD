@@ -149,7 +149,7 @@ MonoBehaviour:
   Dano: 10
   TipoDeDano: fire
   UltimoAtaque: 0
-  bombaPrefab: {fileID: 6770059353786193367, guid: ac66dfac4c2d234418bf734fa6018083, type: 3}
+  bombaPrefab: {fileID: 3961208941590734228, guid: 03042a910b7f9f0439d2784ec1f45fd6, type: 3}
   pontoDeTiro: {fileID: 3700828587726337809}
 --- !u!1 &2861041802646206057
 GameObject:

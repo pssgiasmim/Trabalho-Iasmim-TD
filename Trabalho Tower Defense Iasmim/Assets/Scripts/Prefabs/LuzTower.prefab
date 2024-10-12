@@ -149,7 +149,7 @@ MonoBehaviour:
   Dano: 15
   TipoDeDano: light
   UltimoAtaque: 0
-  bombaPrefab: {fileID: 6770059353786193367, guid: ac66dfac4c2d234418bf734fa6018083, type: 3}
+  bombaPrefab: {fileID: 5499564155157984779, guid: d4ebb13623f2ec0499d9793dff62ecc0, type: 3}
   pontoDeTiro: {fileID: 4467397802341997717}
 --- !u!1 &8705871330858897532
 GameObject:
