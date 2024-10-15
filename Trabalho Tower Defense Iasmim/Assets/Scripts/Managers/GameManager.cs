@@ -8,7 +8,7 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    [SerializeField] List<TowerBase> LugarDasTorres = new List<TowerBase>(); //Lista das torres que são colocadas no mapa.
+    
     public List<GameObject> enemies = new List<GameObject>(); //Lista dos inimigos que estão no mapa.
 
     [SerializeField] EnemyDark enemyDark; //Variável que será acrescentada na lista EnemyBase, que é o inimigo do escuro.
