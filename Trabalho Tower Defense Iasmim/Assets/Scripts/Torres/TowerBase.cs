@@ -2,7 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-//Esta classe serve de base para todas as outras torres.
+/* Esta classe serve de base para todas as outras torres.
+ * Verificação de se há inimigos perto da torre para atacar.
+ * Verificação para caso o inimigo saia de perto da torre.
+ * Ataque aos inimigos.
+ * Disparo da bomba.
+ */
 
 public class TowerBase : MonoBehaviour, IAtacavel
 {
@@ -16,7 +21,10 @@ public class TowerBase : MonoBehaviour, IAtacavel
 
     
 
-    //Método que verifica se os inimigos estão perto das torres
+    /* Método que verifica se os inimigos estão perto das torres.
+     * Se o inimigo ter a tag inimigo, e ele estiver perto (on trigger)
+     * A torre ataca.
+     */
     public void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Inimigo"))
@@ -25,7 +33,7 @@ public class TowerBase : MonoBehaviour, IAtacavel
         }
     }
 
-    //Método que verifica se os inimigos estão longe da torre
+    //Método que verifica se os inimigos estão longe da torre.
     public void OnTriggerExit2D(Collider2D other)
     {
         if (other.CompareTag("Inimigo"))
@@ -34,7 +42,12 @@ public class TowerBase : MonoBehaviour, IAtacavel
         }
     }
 
-    //Método que tem como função atacar os inimigos.
+    /* Método que tem como função atacar os inimigos.
+     * verifica o tempo do último ataque com Time.time.
+     * dano recebe Dano.
+     * se o inimigo for do tipo dark e a torre for uma fire tower, ele recebe dano dobrado. Assim continua...
+     * a variável UltimoAtaque recebe o Time.time atual.
+     */
     public virtual void Atacar(EnemyBase enemiesInRange)
     {
        
@@ -68,7 +81,11 @@ public class TowerBase : MonoBehaviour, IAtacavel
         }
     }
 
-    //Método para fazer a torre disparar a bomba.
+    /* Método para fazer a torre disparar a bomba.
+     * variável da bomba que recebe o instanciamente do prefab da bomba.
+     * a bomba do bombaScript vai receber o componente da bomba.
+     * chama o método DefinirDano da bomba e o método DefinirAlvo.
+    */
     void DispararBomba(int dano, EnemyBase enemy)
     {
         GameObject bomba = Instantiate(bombaPrefab, pontoDeTiro.position, Quaternion.identity); //Variável da bomba que recebe o instanciamente do prefab da bomba.
