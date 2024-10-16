@@ -4,12 +4,18 @@ using UnityEngine;
 
 public class LightTower : TowerBase
 {
-    //Método que faz
+    //Método inicia a classe
     public void Start()
     {
-        
+       
+    }
+
+    //Método
+    public override void Atacar(EnemyBase enemiesInRange)
+    {
+         
     }
 
 
-    //modificar o método atacar para chamar disparar bomba duas vezes
+    
 }

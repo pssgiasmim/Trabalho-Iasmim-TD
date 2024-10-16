@@ -10,5 +10,8 @@ public class IceTower : TowerBase
         
     }
 
-   
+    public override void Atacar(EnemyBase enemiesInRange)
+    {
+
+    }
 }   
