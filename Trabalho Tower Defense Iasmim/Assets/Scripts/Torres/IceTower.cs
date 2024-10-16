@@ -12,6 +12,17 @@ public class IceTower : TowerBase
 
     public override void Atacar(EnemyBase enemiesInRange)
     {
-
+        if (Time.time >= UltimoAtaque + TaxaDeAtaque)
+        {
+            int dano = Dano;
+            if (enemiesInRange.tipoDeInimigo == "Fire")
+            {
+                dano *= 2;
+            }
+            Debug.Log("Atacando com múltiplas bombas!");
+            DispararBomba(dano, enemiesInRange);
+            DispararBomba(dano, enemiesInRange);
+            UltimoAtaque = Time.time;
+        }
     }
 }   

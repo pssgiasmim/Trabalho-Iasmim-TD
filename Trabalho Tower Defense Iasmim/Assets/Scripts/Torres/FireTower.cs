@@ -12,7 +12,16 @@ public class FireTower : TowerBase
 
     public override void Atacar(EnemyBase enemiesInRange)
     {
-
+        if (Time.time >= UltimoAtaque + TaxaDeAtaque)
+        {
+            int dano = Dano;
+            if (enemiesInRange.tipoDeInimigo == "Dark")
+            {
+                dano *= 2;
+            }
+            DispararBomba(dano, enemiesInRange);
+            UltimoAtaque = Time.time;
+        }
     }
 
 

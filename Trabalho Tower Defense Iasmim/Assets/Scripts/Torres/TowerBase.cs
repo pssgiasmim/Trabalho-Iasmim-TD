@@ -42,43 +42,11 @@ public class TowerBase : MonoBehaviour, IAtacavel
         }
     }
 
-    /* Método que tem como função atacar os inimigos.
-     * verifica o tempo do último ataque com Time.time.
-     * dano recebe Dano.
-     * se o inimigo for do tipo dark e a torre for uma fire tower, ele recebe dano dobrado. Assim continua...
-     * a variável UltimoAtaque recebe o Time.time atual.
-     */
+    // Método que tem como função atacar os inimigos.
     public virtual void Atacar(EnemyBase enemiesInRange)
     {
        
-        if (Time.time >= UltimoAtaque + TaxaDeAtaque)
-        {
-            
-            
-                int dano = Dano; //Variável dano que recebe o valor de Dano.
-
-                if (enemiesInRange.tipoDeInimigo== "Dark" && this is FireTower)
-                {
-                    dano *= 2;
-                }
-
-                else if (enemiesInRange.tipoDeInimigo == "Fire" && this is IceTower)
-                {
-                    dano *= 2;
-                }
-
-                else
-                {
-                    dano = 1;
-                }
-
-                DispararBomba(dano, enemiesInRange);
-
-                
-            
-
-            UltimoAtaque = Time.time;
-        }
+        
     }
 
     /* Método para fazer a torre disparar a bomba.
@@ -86,7 +54,7 @@ public class TowerBase : MonoBehaviour, IAtacavel
      * a bomba do bombaScript vai receber o componente da bomba.
      * chama o método DefinirDano da bomba e o método DefinirAlvo.
     */
-    void DispararBomba(int dano, EnemyBase enemy)
+    public void DispararBomba(int dano, EnemyBase enemy)
     {
         GameObject bomba = Instantiate(bombaPrefab, pontoDeTiro.position, Quaternion.identity); //Variável da bomba que recebe o instanciamente do prefab da bomba.
 
@@ -96,4 +64,6 @@ public class TowerBase : MonoBehaviour, IAtacavel
 
         bombaScript.DefinirAlvo(enemy.gameObject);
     }
+        
+    
 }

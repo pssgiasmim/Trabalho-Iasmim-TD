@@ -13,7 +13,14 @@ public class LightTower : TowerBase
     //Método
     public override void Atacar(EnemyBase enemiesInRange)
     {
-         
+         if (Time.time >= UltimoAtaque + TaxaDeAtaque)
+         {
+            int dano = Dano;
+            DispararBomba(dano, enemiesInRange);
+            DispararBomba(dano, enemiesInRange);
+            DispararBomba(dano, enemiesInRange);
+            UltimoAtaque = Time.time;
+         }
     }
 
 
