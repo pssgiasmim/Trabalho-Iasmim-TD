@@ -12,11 +12,11 @@ public class GameManager : MonoBehaviour
     
     public List<GameObject> enemies = new List<GameObject>(); //Lista dos inimigos que estão no mapa.
 
-    [SerializeField] EnemyDark enemyDark; //Variável que será acrescentada na lista EnemyBase, que é o inimigo do escuro.
+    /*[SerializeField] EnemyDark enemyDark; //Variável que será acrescentada na lista EnemyBase, que é o inimigo do escuro.
     [SerializeField] EnemyFire enemyFire; //Variável que será acrescentada na lista EnemyBase, que é o inimigo de fogo.
     [SerializeField] EnemyIce enemyIce; //Variável que será acrescentada na lista EnemyBase, que é o inimigo de gelo.
     [SerializeField] EnemyLight enemyLight; //Variável que será acrescentada na lista EnemyBase, que é o inimigo de luz.
-    [SerializeField] EnemyRock enemyRock; //Variável que será acrescentada na lista EnemyBase, que é o inimigo de pedra.
+    [SerializeField] EnemyRock enemyRock; //Variável que será acrescentada na lista EnemyBase, que é o inimigo de pedra.*/
 
     private int pontosDoJogador = 0;
 
@@ -42,8 +42,7 @@ public class GameManager : MonoBehaviour
         {
             SpawnManager.instance.Spawn();
             
-
-           
+            
         }
     }
 

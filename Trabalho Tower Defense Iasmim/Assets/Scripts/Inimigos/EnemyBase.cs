@@ -36,6 +36,8 @@ public class EnemyBase : MonoBehaviour, IAtacavel
     public virtual void Morrer()
     {
         Destroy(gameObject); 
+
+        GameManager.instance.enemies.Remove(gameObject);
     }
 
     //Método que faz os inimigos atacarem as torres, está inativo.
