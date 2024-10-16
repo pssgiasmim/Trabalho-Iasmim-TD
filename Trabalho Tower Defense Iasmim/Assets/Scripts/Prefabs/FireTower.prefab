@@ -146,7 +146,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TaxaDeAtaque: 1
   Alcance: 5
-  Dano: 10
+  Dano: 5
   TipoDeDano: fire
   UltimoAtaque: 0
   bombaPrefab: {fileID: 6770059353786193367, guid: ac66dfac4c2d234418bf734fa6018083, type: 3}
