@@ -8,7 +8,7 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    [SerializeField] List<TowerBase> LugarDasTorres = new List<TowerBase>(); //Lista das torres que são colocadas no mapa.
+    
     public List<GameObject> enemies = new List<GameObject>(); //Lista dos inimigos que estão no mapa.
 
     [SerializeField] EnemyDark enemyDark; //Variável que será acrescentada na lista EnemyBase, que é o inimigo do escuro.
@@ -27,26 +27,13 @@ public class GameManager : MonoBehaviour
     }
     #endregion
 
-    /*/Método que identifica qual inimigo a torre vai atacar
-    public void Update()
-    {
-        
-
-        foreach (TowerBase tower in LugarDasTorres)
-        {
-            
-            EnemyBase enemiesInRange = GetEnemiesInRange(tower);
-            
-            tower.Atacar(enemiesInRange);
-        }
-    }*/
 
     //Gerencia uma certa quantidade de inimigos na cena, não permintindo que passem de 10.
     public void GerenciarInimigo()
     {
         //int inimigosAtivos = enemies.Count; //Variável que recebe como valor um contador de inimigos.
 
-        while (enemies.Count < 10)
+        while (enemies.Count < 25)
         {
             SpawnManager.instance.Spawn();
             
@@ -62,25 +49,6 @@ public class GameManager : MonoBehaviour
         
     }
 
-    /*/Verifica se o inimigo em alcance, é do mesmo tipo do tipo que a torre ataca.
-    EnemyBase GetEnemiesInRange(TowerBase tower)
-    {
-        //Adicionando novos valores na lista de inimigos.
-        List<EnemyBase> enemiesInRange = new List<EnemyBase>();
-
-        
-        foreach (GameObject enemy in enemies)
-        {
-            
-            if (Vector3.Distance(tower.transform.position, enemy.transform.position) <= tower.Alcance) 
-            {
-                
-                enemiesInRange.Add(enemy.GetComponent<EnemyBase>());
-            }
-        }
-
-        
-        return enemiesInRange;
-    }*/
+    
 
 }

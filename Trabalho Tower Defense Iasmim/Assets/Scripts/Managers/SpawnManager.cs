@@ -36,7 +36,7 @@ public class SpawnManager : MonoBehaviour
         {
             timer = 3.0f;
 
-            if (GameManager.instance.enemies.Count < 10)
+            if (GameManager.instance.enemies.Count < 25)
             {
                 spawnPlace = Random.Range(1, 4);
 

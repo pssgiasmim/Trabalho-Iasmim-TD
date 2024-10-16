@@ -11,7 +11,7 @@ using UnityEngine;
 
 public class EnemyBase : MonoBehaviour, IAtacavel
 {
-    public int saude; //Variável que "conta" a vida do inimigo.
+    public int saude; //Variável que representa a quantidade de vida do inimigo.
     public string tipoDeInimigo; //Variável que vê qual é o tipo de inimigo.
 
     [SerializeField] float speed; //Variável que é a velocidade dos inimigos.
