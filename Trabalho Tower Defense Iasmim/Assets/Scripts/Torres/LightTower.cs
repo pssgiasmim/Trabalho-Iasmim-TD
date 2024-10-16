@@ -21,4 +21,5 @@ public class LightTower : TowerBase
         }
     }*/
 
+    //modificar o método atacar para chamar disparar bomba duas vezes
 }

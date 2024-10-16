@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -16,6 +17,10 @@ public class GameManager : MonoBehaviour
     [SerializeField] EnemyIce enemyIce; //Variável que será acrescentada na lista EnemyBase, que é o inimigo de gelo.
     [SerializeField] EnemyLight enemyLight; //Variável que será acrescentada na lista EnemyBase, que é o inimigo de luz.
     [SerializeField] EnemyRock enemyRock; //Variável que será acrescentada na lista EnemyBase, que é o inimigo de pedra.
+
+    private int pontosDoJogador = 0;
+
+    [SerializeField] TextMeshProUGUI pontosText;
 
     //Singleton, que permite que todas as coisas públicas da classe sejam acessadas por outra classe.
     #region Singleton
@@ -49,6 +54,20 @@ public class GameManager : MonoBehaviour
         
     }
 
-    
+    //Método para fazer o jogador receber pontos para cada inimigo que ele matar.
+    public void AdicionarPontos(int pontos)
+    {
+        pontosDoJogador += pontos;
+        AtualizarUI();
+    }
+
+    public void AtualizarUI()
+    {
+        if (pontosText != null)
+        {
+            pontosText.text = "Pontos: " + pontosDoJogador.ToString();
+        }
+    }
+
 
 }
