@@ -11,5 +11,11 @@ public class EnemyDark : EnemyBase
         tipoDeInimigo = "escuro"; //Tipo do inimigo.
     }
 
-    
+    //Método que ao inimigo DARK morrer, o jogador ganha 1 ponto.
+    public override void Morrer()
+    {
+        GameManager.instance.AdicionarPontos(1);
+        base.Morrer();
+    }
+
 }

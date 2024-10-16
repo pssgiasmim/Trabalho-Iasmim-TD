@@ -33,7 +33,7 @@ public class EnemyBase : MonoBehaviour, IAtacavel
     }
 
     //Método para destruir o inimigo
-    public void Morrer()
+    public virtual void Morrer()
     {
         Destroy(gameObject); 
     }
