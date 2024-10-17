@@ -13,7 +13,7 @@ public class Bomba : MonoBehaviour
     //Método que configurfa o dano da bala.
     public void DefinirDano(int novoDano)
     {
-        dano = novoDano;
+        dano= novoDano;
     }
 
     //Método que define o alvo da bala.

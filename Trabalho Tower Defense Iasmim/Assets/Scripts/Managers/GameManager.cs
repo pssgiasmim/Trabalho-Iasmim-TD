@@ -12,9 +12,10 @@ public class GameManager : MonoBehaviour
     
     public List<GameObject> enemies = new List<GameObject>(); //Lista dos inimigos que estão no mapa.
 
-    private int pontosDoJogador = 0;
+    private int pontosDoJogador = 450;
 
     [SerializeField] TextMeshProUGUI pontosText;
+
 
     //Singleton, que permite que todas as coisas públicas da classe sejam acessadas por outra classe.
     #region Singleton
@@ -26,12 +27,15 @@ public class GameManager : MonoBehaviour
     }
     #endregion
 
+    //Método que inicia o jogo.
+    public void Start()
+    {
+        AtualizarUI();
+    }
 
     //Gerencia uma certa quantidade de inimigos na cena, não permintindo que passem de 10.
     public void GerenciarInimigo()
     {
-        
-
         while (enemies.Count < 25)
         {
             SpawnManager.instance.Spawn();
@@ -54,6 +58,7 @@ public class GameManager : MonoBehaviour
         AtualizarUI();
     }
 
+    //Método responsável por atualizar a UI conforme o pontos feitos pelo jogador.
     public void AtualizarUI()
     {
         if (pontosText != null)
@@ -62,5 +67,16 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    //Método que é responsável por retornar os pontos do jogador.
+    public int ObterPontos()
+    {
+        return pontosDoJogador;
+    }
 
+    //Método que desconta os pontos do jogador quando ele comprar as torres.
+    public void DescontarPontos(int pontos)
+    {
+        pontosDoJogador -= pontos;
+        AtualizarUI();
+    }
 }

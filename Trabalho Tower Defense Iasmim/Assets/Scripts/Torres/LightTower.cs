@@ -14,32 +14,32 @@ public class LightTower : TowerBase
     public override void Atacar(EnemyBase enemiesInRange)
     {
         Debug.Log("Atacando com três bombas.");
-         if (Time.time >= UltimoAtaque + TaxaDeAtaque)
+         if (Time.time >= ultimoAtaque + taxaDeAtaque)
          {
             int dano = Dano;
 
             DispararBomba(dano, enemiesInRange);
             
-            UltimoAtaque = Time.time;
+            ultimoAtaque = Time.time;
          }
 
 
-        if (Time.time >= UltimoAtaque + TaxaDeAtaque)
+        if (Time.time >= ultimoAtaque + taxaDeAtaque)
         {
             int dano = Dano;
 
             DispararBomba(dano, enemiesInRange);
 
-            UltimoAtaque = Time.time;
+            ultimoAtaque = Time.time;
         }
 
-        if (Time.time >= UltimoAtaque + TaxaDeAtaque)
+        if (Time.time >= ultimoAtaque + taxaDeAtaque)
         {
-            int dano = Dano;
+            int danoo = Dano;
 
-            DispararBomba(dano, enemiesInRange);
+            DispararBomba(Dano, enemiesInRange);
 
-            UltimoAtaque = Time.time;
+            ultimoAtaque = Time.time;
         }
     }
 

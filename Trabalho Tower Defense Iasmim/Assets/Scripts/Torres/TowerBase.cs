@@ -11,11 +11,11 @@ using UnityEngine;
 
 public class TowerBase : MonoBehaviour, IAtacavel
 {
-    public float TaxaDeAtaque; //Variável da Taxa de ataque da torre.
-    public float Alcance; //Variável de Alcance da torre.
+    public float taxaDeAtaque; //Variável da Taxa de ataque da torre.
+    public float alcance; //Variável de Alcance da torre.
     public int Dano; //Variável de Dano da torre.
-    public string TipoDeDano; //Variável do Tipo de dano da torre.
-    public float UltimoAtaque; //Variável que registra o último ataque da torre.
+    public string tipoDeDano; //Variável do Tipo de dano da torre.
+    public float ultimoAtaque; //Variável que registra o último ataque da torre.
     public GameObject bombaPrefab; //Variável do prefab da bomba.
     public Transform pontoDeTiro; //Variável do ponto de onde a bomba vai ser disparada.
 
