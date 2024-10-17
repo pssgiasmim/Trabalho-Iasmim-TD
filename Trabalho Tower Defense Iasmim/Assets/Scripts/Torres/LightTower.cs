@@ -11,14 +11,14 @@ public class LightTower : TowerBase
     }
 
     //Método que faz a LightTower disparar três bombas contra os inimigos.
-    public override void Atacar(EnemyBase enemiesInRange)
+    public override void Atacar(GameObject alvo)
     {
         Debug.Log("Atacando com três bombas.");
          if (Time.time >= ultimoAtaque + taxaDeAtaque)
          {
             int dano = Dano;
 
-            DispararBomba(dano, enemiesInRange);
+            DispararBomba(dano, alvo.GetComponent<EnemyBase>());
             
             ultimoAtaque = Time.time;
          }
@@ -28,16 +28,16 @@ public class LightTower : TowerBase
         {
             int dano = Dano;
 
-            DispararBomba(dano, enemiesInRange);
+            DispararBomba(dano, alvo.GetComponent<EnemyBase>());
 
             ultimoAtaque = Time.time;
         }
 
         if (Time.time >= ultimoAtaque + taxaDeAtaque)
         {
-            int danoo = Dano;
+            int dano = Dano;
 
-            DispararBomba(Dano, enemiesInRange);
+            DispararBomba(dano, alvo.GetComponent<EnemyBase>());
 
             ultimoAtaque = Time.time;
         }

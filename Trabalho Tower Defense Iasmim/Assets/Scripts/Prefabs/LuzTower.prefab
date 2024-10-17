@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 4182857750782798530}
   m_Layer: 0
   m_Name: LuzTower
-  m_TagString: Untagged
+  m_TagString: Torre
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -28,8 +28,8 @@ Transform:
   m_GameObject: {fileID: 8364141482086305526}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.66, y: -7.96, z: 0}
-  m_LocalScale: {x: 2.0792172, y: 2.0792172, z: 2.0792172}
+  m_LocalPosition: {x: -5.01, y: -7.94, z: 0}
+  m_LocalScale: {x: 1.5706407, y: 1.5706407, z: 1.5706407}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4467397802341997717}
@@ -144,13 +144,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4df0c5a0df30cc4689af6786c861d69, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TaxaDeAtaque: 0.5
-  Alcance: 6
+  taxaDeAtaque: 0
+  alcance: 0
   Dano: 15
-  TipoDeDano: light
-  UltimoAtaque: 0
+  tipoDeDano: 
+  ultimoAtaque: 0
   bombaPrefab: {fileID: 5499564155157984779, guid: d4ebb13623f2ec0499d9793dff62ecc0, type: 3}
   pontoDeTiro: {fileID: 4467397802341997717}
+  saudeDaTorre: 0
 --- !u!1 &8705871330858897532
 GameObject:
   m_ObjectHideFlags: 0

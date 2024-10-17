@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 8921862465953932425}
   m_Layer: 0
   m_Name: FireTower
-  m_TagString: Untagged
+  m_TagString: Torre
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -144,13 +144,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3bb1eb34badfd084fabc5102c998720a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TaxaDeAtaque: 1
-  Alcance: 5
+  taxaDeAtaque: 0
+  alcance: 0
   Dano: 5
-  TipoDeDano: fire
-  UltimoAtaque: 0
+  tipoDeDano: 
+  ultimoAtaque: 0
   bombaPrefab: {fileID: 3961208941590734228, guid: 03042a910b7f9f0439d2784ec1f45fd6, type: 3}
   pontoDeTiro: {fileID: 3700828587726337809}
+  saudeDaTorre: 0
 --- !u!1 &2861041802646206057
 GameObject:
   m_ObjectHideFlags: 0

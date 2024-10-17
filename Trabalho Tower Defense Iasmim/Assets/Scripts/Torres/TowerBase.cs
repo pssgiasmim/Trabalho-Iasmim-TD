@@ -18,7 +18,7 @@ public class TowerBase : MonoBehaviour, IAtacavel
     public float ultimoAtaque; //Variável que registra o último ataque da torre.
     public GameObject bombaPrefab; //Variável do prefab da bomba.
     public Transform pontoDeTiro; //Variável do ponto de onde a bomba vai ser disparada.
-
+    public int saudeDaTorre; //Variável que representa a saude da torre.
     
 
     /* Método que verifica se os inimigos estão perto das torres.
@@ -29,7 +29,7 @@ public class TowerBase : MonoBehaviour, IAtacavel
     {
         if (other.CompareTag("Inimigo"))
         {
-            Atacar(other.GetComponent<EnemyBase>());
+            Atacar(other.gameObject);
         }
     }
 
@@ -42,12 +42,23 @@ public class TowerBase : MonoBehaviour, IAtacavel
         }
     }
 
-    // Método que tem como função atacar os inimigos.
-    public virtual void Atacar(EnemyBase enemiesInRange)
+    //Método que faz a torre receber dano dos inimigos
+    public void ReceberDano(int quantidade)
     {
-       
-        
+        saudeDaTorre -= quantidade;
+
+        if (saudeDaTorre <= 0)
+        {
+            DestruirTorre();
+        }
     }
+
+    //Método que destroi a torre com base nos danos jogados pelos inimigos.
+    private void DestruirTorre()
+    {
+        Destroy(gameObject);
+    }
+
 
     /* Método para fazer a torre disparar a bomba.
      * variável da bomba que recebe o instanciamente do prefab da bomba.
@@ -64,6 +75,11 @@ public class TowerBase : MonoBehaviour, IAtacavel
 
         bombaScript.DefinirAlvo(enemy.gameObject);
     }
-        
-    
+
+    // Método que tem como função atacar os inimigos.
+    public virtual void Atacar(GameObject alvo)
+    {
+
+
+    }
 }

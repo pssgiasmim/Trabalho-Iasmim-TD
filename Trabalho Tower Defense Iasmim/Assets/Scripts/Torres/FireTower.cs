@@ -10,17 +10,17 @@ public class FireTower : TowerBase
         
    }
 
-    public override void Atacar(EnemyBase enemiesInRange)
+    public override void Atacar(GameObject alvo)
     {
         if (Time.time >= ultimoAtaque + taxaDeAtaque)
         {
             int dano = Dano;
-            if (enemiesInRange.tipoDeInimigo == "Dark")
+            if (alvo.GetComponent<EnemyBase>().tipoDeInimigo == "Dark")
             {
                 dano *= 2;
             }
             Debug.Log("Atacando com uma bomba.");
-            DispararBomba(dano, enemiesInRange);
+            DispararBomba(dano, alvo.GetComponent<EnemyBase>());
             ultimoAtaque = Time.time;
         }
     }

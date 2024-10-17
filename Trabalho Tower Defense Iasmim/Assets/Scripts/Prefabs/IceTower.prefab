@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 4835389891781627414}
   m_Layer: 0
   m_Name: IceTower
-  m_TagString: Untagged
+  m_TagString: Torre
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -28,8 +28,8 @@ Transform:
   m_GameObject: {fileID: 4162484469218951503}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.99, y: -1.92, z: 0}
-  m_LocalScale: {x: 1.9614668, y: 1.9614668, z: 1.9614668}
+  m_LocalPosition: {x: -4, y: -2.03, z: 0}
+  m_LocalScale: {x: 1.7339265, y: 1.7339265, z: 1.7339265}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2939397052631767382}
@@ -144,13 +144,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 090cc07d787335246a67b1cba3e836a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TaxaDeAtaque: 1.5
-  Alcance: 4
+  taxaDeAtaque: 0
+  alcance: 0
   Dano: 8
-  TipoDeDano: ice
-  UltimoAtaque: 0
+  tipoDeDano: 
+  ultimoAtaque: 0
   bombaPrefab: {fileID: 1566426760609450012, guid: d6de18f0400b0624dbd3fb2843349548, type: 3}
   pontoDeTiro: {fileID: 2939397052631767382}
+  saudeDaTorre: 0
 --- !u!1 &5802780407063375677
 GameObject:
   m_ObjectHideFlags: 0

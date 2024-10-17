@@ -6,6 +6,6 @@ using UnityEngine;
 public interface IAtacavel 
 {
     //Método atacar que faz com que algum objeto ataque outro, de acordo com o alcance.
-    public void Atacar(EnemyBase enemiesInRange);
+    public void Atacar(GameObject alvo);
 
 }

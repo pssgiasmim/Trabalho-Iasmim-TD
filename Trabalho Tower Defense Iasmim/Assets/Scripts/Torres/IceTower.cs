@@ -11,18 +11,18 @@ public class IceTower : TowerBase
     }
 
     //Método que faz a IceTower disparar duas bombas contra os inimigos.
-    public override void Atacar(EnemyBase enemiesInRange)
+    public override void Atacar(GameObject alvo)
     {
         if (Time.time >= ultimoAtaque + taxaDeAtaque)
         {
             int dano = Dano;
-            if (enemiesInRange.tipoDeInimigo == "Fire")
+            if (alvo.GetComponent<EnemyBase>().tipoDeInimigo == "Fire")
             {
                 dano *= 2;
             }
             Debug.Log("Atacando com duas bombas!");
-            DispararBomba(dano, enemiesInRange);
-            DispararBomba(dano, enemiesInRange);
+            DispararBomba(dano, alvo.GetComponent<EnemyBase>());
+            DispararBomba(dano, alvo.GetComponent<EnemyBase>());
             ultimoAtaque = Time.time;
         }
     }
