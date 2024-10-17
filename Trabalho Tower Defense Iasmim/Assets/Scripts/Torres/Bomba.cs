@@ -34,7 +34,7 @@ public class Bomba : MonoBehaviour
             {
                 alvo.GetComponent<EnemyBase>().ReceberDano(dano);
 
-                
+                Destroy(gameObject);
             }
         }
 
