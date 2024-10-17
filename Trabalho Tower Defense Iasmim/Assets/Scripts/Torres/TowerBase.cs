@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /* Esta classe serve de base para todas as outras torres.
- * Verificação de se há inimigos perto da torre para atacar.
- * Verificação para caso o inimigo saia de perto da torre.
- * Ataque aos inimigos.
+ * A torre recebe dano do inimigo.
+ * A torre pode ser destrída pelo inimigo.
+ * Ataque aos inimigos -> Nas subclasses está definido o ataque.
  * Disparo da bomba.
  */
 
@@ -20,27 +20,6 @@ public class TowerBase : MonoBehaviour, IAtacavel
     public Transform pontoDeTiro; //Variável do ponto de onde a bomba vai ser disparada.
     public int saudeDaTorre; //Variável que representa a saude da torre.
     
-
-    /* Método que verifica se os inimigos estão perto das torres.
-     * Se o inimigo ter a tag inimigo, e ele estiver perto (on trigger)
-     * A torre ataca.
-     */
-    public void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.CompareTag("Inimigo"))
-        {
-            Atacar(other.gameObject);
-        }
-    }
-
-    //Método que verifica se os inimigos estão longe da torre.
-    public void OnTriggerExit2D(Collider2D other)
-    {
-        if (other.CompareTag("Inimigo"))
-        {
-
-        }
-    }
 
     //Método que faz a torre receber dano dos inimigos
     public void ReceberDano(int quantidade)
