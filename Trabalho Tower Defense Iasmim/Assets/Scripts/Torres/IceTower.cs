@@ -10,6 +10,7 @@ public class IceTower : TowerBase
         
     }
 
+    //Método que faz a IceTower disparar duas bombas contra os inimigos.
     public override void Atacar(EnemyBase enemiesInRange)
     {
         if (Time.time >= UltimoAtaque + TaxaDeAtaque)
@@ -19,7 +20,7 @@ public class IceTower : TowerBase
             {
                 dano *= 2;
             }
-            Debug.Log("Atacando com múltiplas bombas!");
+            Debug.Log("Atacando com duas bombas!");
             DispararBomba(dano, enemiesInRange);
             DispararBomba(dano, enemiesInRange);
             UltimoAtaque = Time.time;

@@ -34,7 +34,7 @@ public class SpawnManager : MonoBehaviour
     {
         if (timer <= 0)
         {
-            timer = 3.0f;
+            timer = 1.0f;
 
             if (GameManager.instance.enemies.Count < 25)
             {
