@@ -4,7 +4,7 @@ using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 
-//Classe que faz com que o jogador escolha onde posicionar as torres.
+//Classe que faz com que o jogador posicione as torres e compre elas.
 public class TowerPlace : MonoBehaviour
 {
     public GameObject fireTowerPrefab; //Variável do prefab da torre de fogo.
@@ -46,73 +46,90 @@ public class TowerPlace : MonoBehaviour
             Vector3 mousePosition = Input.mousePosition; //Variável que recebe a posição do mouse.
             mousePosition = mainCamera.ScreenToWorldPoint(mousePosition);
             mousePosition.z = 0; // Define a posição z para 0 em 2D.
+            ComprarTorre(mousePosition);
 
-            int valor = 0; //Variável de valor (geral) que é igual a 0.
-
-            switch (currentTipoTorre)
+            //Botões que selecionam a torre.
+            //Botões [1], [2] e [3] alternam os tipos de torre. No keyPad
+            if (Input.GetKeyDown(KeyCode.Keypad1))
             {
-                case TipoTorre.Fire:
-                    valor = valorFireTower;
-                break;
-
-                case TipoTorre.Ice:
-                    valor = valorFireTower;
-                break;
-
-                case TipoTorre.Light:
-                    valor = valorFireTower;
-                break;
-
+                currentTipoTorre = TipoTorre.Fire;
             }
-
-
-            if (GameManager.instance.ObterPontos() >= valor)
+            else if (Input.GetKeyDown(KeyCode.Keypad2))
             {
-                //Instancia a torre com base no que foi selecionado.
-                switch (currentTipoTorre)
-                {
-                    case TipoTorre.Fire:
+                currentTipoTorre = TipoTorre.Ice;
+            }
+            else if (Input.GetKeyDown(KeyCode.Keypad3))
+            {
+                currentTipoTorre = TipoTorre.Light;
+            }   
+        }
 
-                        Instantiate(fireTowerPrefab, mousePosition, Quaternion.identity);
+    }
 
-                        break;
+    //Método responsável por comprar a torre de acordo com os pontos que o jogador tem.
+    private void ComprarTorre(Vector3 position)
+    {
+        int valor = currentTipoTorre switch
+        {
+            TipoTorre.Fire => valorFireTower,
+            TipoTorre.Ice => valorIceTower,
+            TipoTorre.Light => valorLightTower,
+            _ => 0
+        };
 
-                    case TipoTorre.Ice:
-
-                        Instantiate(iceTowerPrefab, mousePosition, Quaternion.identity);
-
-                        break;
-
-                    case TipoTorre.Light:
-
-                        Instantiate(lightTowerPrefab, mousePosition, Quaternion.identity);
-
-                        break;
-                }
-
+        if (GameManager.instance.ObterPontos() >= valor)
+        {
+            TowerArea area = PegarAreaPosicionada(position);
+            if (area != null && !area.estaOcupado)
+            {
+                Instantiate(GetTowerPrefab(), position, Quaternion.identity);
                 GameManager.instance.DescontarPontos(valor);
-                textoDaMensagem.text = "Torre " + currentTipoTorre + " comprada!";
+                area.estaOcupado = true;
+                ExibirMensagem("Torre " + currentTipoTorre + " comprada!");
+
             }
             else
             {
-                textoDaMensagem.text = "Pontos insuficientes para comprar a torre.";
+                ExibirMensagem("Área já ocupada!");
             }
-            
         }
-
-        //Botões que selecionam a torre.
-        //Botões [1], [2] e [3] alternam os tipos de torre. No keyPad
-        if (Input.GetKeyDown(KeyCode.Keypad1))
+        else
         {
-            currentTipoTorre = TipoTorre.Fire;
-        }
-        else if (Input.GetKeyDown(KeyCode.Keypad2))
-        {
-            currentTipoTorre = TipoTorre.Ice;
-        }
-        else if (Input.GetKeyDown(KeyCode.Keypad3))
-        {
-            currentTipoTorre = TipoTorre.Light;
+            ExibirMensagem("Pontos insuficientes para efetuar a compra!");
         }
     }
+
+    //Método que "referencia" os tipos das torres com os seus especificos prefabs.
+    private GameObject GetTowerPrefab()
+    {
+        return currentTipoTorre switch
+        {
+            TipoTorre.Fire => fireTowerPrefab,
+            TipoTorre.Ice => iceTowerPrefab,
+            TipoTorre.Light => lightTowerPrefab,
+            _ => null
+
+        };
+    }
+
+    //Método que pega a área posicionda da torre, onde o jogador clicou
+    private TowerArea PegarAreaPosicionada (Vector3 position)
+    {
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(position, 0.5f);
+        foreach  (Collider2D collider in colliders)
+        {
+            if (collider.TryGetComponent<TowerArea>(out TowerArea area))
+            {
+                return area;
+            }
+        }
+
+        return null;
+    }
+
+    private void ExibirMensagem (string mensagem)
+    {
+        textoDaMensagem.text = mensagem;
+    }
+
 }
