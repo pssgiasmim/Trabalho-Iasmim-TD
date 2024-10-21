@@ -7,21 +7,12 @@ public class TowerArea : MonoBehaviour
 {
     public bool estaOcupado = false; //Variável que armazena se o local está ocupado ou não.
 
-    //Método que verifica de a torre está dentro da área, utilizando uma tag Torre, que serve como "verificação".
-    private void OnTriggerEnter2D(Collider2D other)
+    //Método para quando o clique do mouse acontecer, a torre ser comprada e ser instanciada no bloco clicado.
+    private void OnMouseDown()
     {
-        if (other.CompareTag("Torre"))
+        if  (estaOcupado == false)
         {
-            estaOcupado=true;
-        }
-    }
-
-    //Método que verifica se a torre ainda está na área ou não.
-    private void OnTriggerExit2D(Collider2D other)
-    {
-        if (other.CompareTag("Torre"))
-        {
-            estaOcupado = false;
+            TowerPlace.instance.ComprarTorre(transform.position);
         }
     }
 

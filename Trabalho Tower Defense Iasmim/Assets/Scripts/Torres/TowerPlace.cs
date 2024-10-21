@@ -13,11 +13,21 @@ public class TowerPlace : MonoBehaviour
     private Camera mainCamera; //Variável que faz com que a camerâ "acompanhe" do jogador.
 
 
-    public int valorFireTower = 100; //Variável com valor de fire tower.
-    public int valorIceTower = 150; //Variável com valor de ice tower.
-    public int valorLightTower = 200; //Variável com valor de light tower.
+    private int valorFireTower = 10; //Variável com valor de fire tower.
+    private int valorIceTower = 15; //Variável com valor de ice tower.
+    private int valorLightTower = 11; //Variável com valor de light tower.
 
     [SerializeField] TextMeshProUGUI textoDaMensagem; //Variável que vai aparecer o texto das mensagens sobre as compras.
+
+    //Singleton, que permite que todas as coisas públicas da classe sejam acessadas por outra classe.
+    #region Singleton
+    public static TowerPlace instance;
+
+    private void Awake()
+    {
+        instance = this;
+    }
+    #endregion
 
     //Método que pega a camera principal.
     public void Start()
@@ -40,13 +50,7 @@ public class TowerPlace : MonoBehaviour
     //Método responsável por "comprar" as torres, detectar o clique do mouse e atribuir teclas do keypad.
     public void Update()
     {
-        //Detecta o clique do mouse
-        if (Input.GetMouseButtonDown(0))
-        {
-            Vector3 mousePosition = Input.mousePosition; //Variável que recebe a posição do mouse.
-            mousePosition = mainCamera.ScreenToWorldPoint(mousePosition);
-            mousePosition.z = 0; // Define a posição z para 0 em 2D.
-            ComprarTorre(mousePosition);
+        
 
             //Botões que selecionam a torre.
             //Botões [1], [2] e [3] alternam os tipos de torre. No keyPad
@@ -62,12 +66,12 @@ public class TowerPlace : MonoBehaviour
             {
                 currentTipoTorre = TipoTorre.Light;
             }   
-        }
+        
 
     }
 
     //Método responsável por comprar a torre de acordo com os pontos que o jogador tem.
-    private void ComprarTorre(Vector3 position)
+    public void ComprarTorre(Vector3 position)
     {
         int valor = currentTipoTorre switch
         {
@@ -127,6 +131,7 @@ public class TowerPlace : MonoBehaviour
         return null;
     }
 
+    //Método que exibe as mensagens decorrentes da compra na cena.
     private void ExibirMensagem (string mensagem)
     {
         textoDaMensagem.text = mensagem;

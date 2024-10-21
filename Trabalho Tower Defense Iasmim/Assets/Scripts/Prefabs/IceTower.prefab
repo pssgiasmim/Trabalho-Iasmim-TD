@@ -237,12 +237,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   taxaDeAtaque: 0
   alcance: 0
-  Dano: 8
+  Dano: 15
   tipoDeDano: 
   ultimoAtaque: 0
   bombaPrefab: {fileID: 1566426760609450012, guid: d6de18f0400b0624dbd3fb2843349548, type: 3}
   pontoDeTiro: {fileID: 2939397052631767382}
-  saudeDaTorre: 0
+  saudeDaTorre: 30
 --- !u!1 &5802780407063375677
 GameObject:
   m_ObjectHideFlags: 0
