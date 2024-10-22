@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-//Classe responsável por verificar por meiop da tag Torre, se alguma torre está dentro da área ou não.
+//Classe responsável por verificar por meio da tag Torre, se alguma torre está dentro da área ou não.
 public class TowerArea : MonoBehaviour
 {
     public bool estaOcupado = false; //Variável que armazena se o local está ocupado ou não.

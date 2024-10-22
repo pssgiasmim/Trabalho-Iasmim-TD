@@ -2,13 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-/*Classe Base dos inimigos. Todos os cinco inimigos herdam desta classe.
- * Aqui nós fazemos os inimigos receberem o dano.
- * Após receber o dano, eles são destruidos / morrem.
- * Método que faz os inimigos atacarem , esta inativo.
- * Método update que faz o inimigo vir numa velocidade e consequentemente ser instanciado na cena.
- */
-
+//Classe Base dos inimigos. Todos os cinco inimigos herdam desta classe. Eles recebm dano e se destroem. Eles atacam. São instanciados numa direção e verifica se eles passaram das torres.
 public class EnemyBase : MonoBehaviour, IAtacavel
 {
     public int saude; //Variável que representa a quantidade de vida do inimigo.
@@ -18,10 +12,9 @@ public class EnemyBase : MonoBehaviour, IAtacavel
     [SerializeField] Rigidbody2D rigidbody2D; //Variável que cuida da fisica dos inimigos.
     [SerializeField] int dano = 10; //Dano que o inimigo causará nas torres.
 
-    /* Método chamado quando o inimigo receber dano.
-     * Ele subtrai a "saude" do inimigo pela "quantidade" de dano recebido.
-     * verifica se a "saude" é menor do que 0 para destruir o inimigo com o método "Morrer()".
-     */
+
+
+    // Método chamado quando o inimigo receber dano.
     public void ReceberDano(int quantidade)
     {
         saude -= quantidade; 
@@ -33,6 +26,8 @@ public class EnemyBase : MonoBehaviour, IAtacavel
         }
     }
 
+
+
     //Método para destruir o inimigo
     public virtual void Morrer()
     {
@@ -40,6 +35,8 @@ public class EnemyBase : MonoBehaviour, IAtacavel
 
         GameManager.instance.enemies.Remove(gameObject);
     }
+
+
 
     //Método que faz os inimigos atacarem as torres.
     public virtual void Atacar(GameObject alvo)
@@ -60,9 +57,9 @@ public class EnemyBase : MonoBehaviour, IAtacavel
         }
     }
 
-    /* Método que verifica se os inimigos estão perto das torres.
-     * Se a torre ter a tag Torre, e ele estiver perto (on trigger), o  inimigo vai causar dano.
-     */
+
+
+    // Método que verifica se os inimigos estão perto das torres.
     public void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Torre"))
@@ -70,6 +67,8 @@ public class EnemyBase : MonoBehaviour, IAtacavel
             Atacar(other.gameObject);
         }
     }
+
+
 
     //Método que verifica se as torres estão longe dos inimigos.
     public void OnTriggerExit2D(Collider2D other)
@@ -80,12 +79,21 @@ public class EnemyBase : MonoBehaviour, IAtacavel
         }
     }
 
-    /* Método que faz os inimigos se moverem no mapa.
-     * Pega a velocidade do rigidbody do inimigo e faz ele se mover para o lado esquerdo (-1) sem mexer na altura (0).
-     */
-    public void Update()
+
+
+    // Método que faz os inimigos se moverem no mapa.
+    public virtual void Update()
     {
         rigidbody2D.velocity = new Vector2(-1, 0);
+
+        if (transform.position.x < GameManager.instance.screenBounds.x * -1)
+        {
+            GameManager.instance.inimigosQuePassaram++;
+            GameManager.instance.InimigoPassou();
+            Morrer();
+        }
+
+        
     }
 
 }

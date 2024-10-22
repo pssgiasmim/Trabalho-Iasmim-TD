@@ -4,7 +4,7 @@ using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 
-//Classe que faz com que o jogador posicione as torres e compre elas.
+//Classe que faz com que o jogador posicione as torres em lugares especificos e compre elas.
 public class TowerPlace : MonoBehaviour
 {
     public GameObject fireTowerPrefab; //Variável do prefab da torre de fogo.
@@ -19,6 +19,8 @@ public class TowerPlace : MonoBehaviour
 
     [SerializeField] TextMeshProUGUI textoDaMensagem; //Variável que vai aparecer o texto das mensagens sobre as compras.
 
+
+
     //Singleton, que permite que todas as coisas públicas da classe sejam acessadas por outra classe.
     #region Singleton
     public static TowerPlace instance;
@@ -29,12 +31,16 @@ public class TowerPlace : MonoBehaviour
     }
     #endregion
 
+
+
     //Método que pega a camera principal.
     public void Start()
     {
         mainCamera = Camera.main;
         textoDaMensagem.text = ""; 
     }
+
+
 
     //Método que identifica os membros da numeração, que no caso são as identificações das torres.
     private enum TipoTorre
@@ -44,8 +50,12 @@ public class TowerPlace : MonoBehaviour
         Light
     }
 
+
+
     //Especifica o tipo de torre padrão
     private TipoTorre currentTipoTorre = TipoTorre.Fire;
+
+
 
     //Método responsável por "comprar" as torres, detectar o clique do mouse e atribuir teclas do keypad.
     public void Update()
@@ -69,6 +79,8 @@ public class TowerPlace : MonoBehaviour
         
 
     }
+
+
 
     //Método responsável por comprar a torre de acordo com os pontos que o jogador tem.
     public void ComprarTorre(Vector3 position)
@@ -103,6 +115,8 @@ public class TowerPlace : MonoBehaviour
         }
     }
 
+
+
     //Método que "referencia" os tipos das torres com os seus especificos prefabs.
     private GameObject GetTowerPrefab()
     {
@@ -115,6 +129,8 @@ public class TowerPlace : MonoBehaviour
 
         };
     }
+
+
 
     //Método que pega a área posicionda da torre, onde o jogador clicou
     private TowerArea PegarAreaPosicionada (Vector3 position)
@@ -130,6 +146,8 @@ public class TowerPlace : MonoBehaviour
 
         return null;
     }
+
+
 
     //Método que exibe as mensagens decorrentes da compra na cena.
     private void ExibirMensagem (string mensagem)

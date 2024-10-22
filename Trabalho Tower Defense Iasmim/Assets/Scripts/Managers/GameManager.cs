@@ -3,18 +3,25 @@ using System.Collections.Generic;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
-/*A classe GameManager, gerencia tudo o que tem dentro do jogo. 
-  Como, uma lista de inimigos na cena. */
-
+//A classe GameManager, gerencia tudo o que tem dentro do jogo. Como uma lista de inimigos, a tela de GameOver e os pontos que o jogador recebe e desconta.
 public class GameManager : MonoBehaviour
 {
     
     public List<GameObject> enemies = new List<GameObject>(); //Lista dos inimigos que estão no mapa.
 
-    private int pontosDoJogador = 450;
+    private int pontosDoJogador = 110; //Variável que armazena os pontos do jogador.
 
-    [SerializeField] TextMeshProUGUI pontosText;
+    public int inimigosQuePassaram = 0; //Variável que é contador de quantos inimigos passaram pela torre.
+
+    [SerializeField] TextMeshProUGUI pontosText; //Variável do texto que apresenta os pontos na tela.
+    [SerializeField] GameObject telaGameOver; //Variável que referencia a tela de game over no inspector.
+    [SerializeField] TextMeshProUGUI pontosFinaisText; //Variável que armazena e apreenta os pontos finais do jogador.
+
+    public Vector2 screenBounds; //Variável que armazena os valores de scrrenbounds.
+    
+
 
 
     //Singleton, que permite que todas as coisas públicas da classe sejam acessadas por outra classe.
@@ -24,25 +31,39 @@ public class GameManager : MonoBehaviour
     private void Awake()
     {
         instance = this;
+        screenBounds = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height));
     }
     #endregion
 
-    //Método que inicia o jogo.
+
+
+    //Método que inicia o jogo e garante que a tela de game over inicie desligada.
     public void Start()
     {
         AtualizarUI();
+        telaGameOver.SetActive(false);
     }
 
-    //Gerencia uma certa quantidade de inimigos na cena, não permintindo que passem de 10.
+
+
+    //Método que está verificando toda hora de os inimigos passaram das torres.
+    public void Update()
+    {
+        InimigoPassou();
+    }
+
+
+
+    //Gerencia uma certa quantidade de inimigos na cena, não permintindo que passem de 25.
     public void GerenciarInimigo()
     {
         while (enemies.Count < 25)
         {
             SpawnManager.instance.Spawn();
-            
-            
         }
     }
+
+
 
     //Método que adiciona os inimigos na lista
     public void AdicionarInimigos(GameObject obj)
@@ -51,12 +72,16 @@ public class GameManager : MonoBehaviour
         
     }
 
+
+
     //Método para fazer o jogador receber pontos para cada inimigo que ele matar.
     public void AdicionarPontos(int pontos)
     {
         pontosDoJogador += pontos;
         AtualizarUI();
     }
+
+
 
     //Método responsável por atualizar a UI conforme o pontos feitos pelo jogador.
     public void AtualizarUI()
@@ -67,16 +92,48 @@ public class GameManager : MonoBehaviour
         }
     }
 
+
+
     //Método que é responsável por retornar os pontos do jogador.
     public int ObterPontos()
     {
         return pontosDoJogador;
     }
 
+
+
     //Método que desconta os pontos do jogador quando ele comprar as torres.
     public void DescontarPontos(int pontos)
     {
         pontosDoJogador -= pontos;
         AtualizarUI();
+    }
+
+
+
+    //Método chamado dentro de EnemyBase quando um inimigo passar das torres.
+    public void InimigoPassou()
+    {
+                if (inimigosQuePassaram >= 20)
+                {
+                    GameOver();
+                }
+    }
+
+
+
+    //Método responsável por exibir a tela de GameOver com a pontuação final do jogador.
+    public void GameOver()
+    {
+        telaGameOver.SetActive(true);
+        pontosFinaisText.text = "Pontuação Final: " + pontosDoJogador;
+    }
+
+
+
+    //Método responsável por reiniciar o jogo.
+    public void ReiniciarJogo()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }

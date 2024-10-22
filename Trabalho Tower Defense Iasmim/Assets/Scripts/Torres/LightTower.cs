@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//Subclasse que representa LightTower e o seu método de Ataque.
 public class LightTower : TowerBase
 {
     //Método inicia a classe

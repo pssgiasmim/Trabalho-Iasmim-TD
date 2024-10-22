@@ -2,13 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-/* Esta classe serve de base para todas as outras torres.
- * A torre recebe dano do inimigo.
- * A torre pode ser destrída pelo inimigo.
- * Ataque aos inimigos -> Nas subclasses está definido o ataque.
- * Disparo da bomba.
- */
-
+// Esta classe serve de base para todas as outras torres. Elas recebem dano e se destroem. Implementa o método atacar de IAtacavel e dispara as bombas.
 public class TowerBase : MonoBehaviour, IAtacavel
 {
     public float taxaDeAtaque; //Variável da Taxa de ataque da torre.
@@ -39,11 +33,7 @@ public class TowerBase : MonoBehaviour, IAtacavel
     }
 
 
-    /* Método para fazer a torre disparar a bomba.
-     * variável da bomba que recebe o instanciamente do prefab da bomba.
-     * a bomba do bombaScript vai receber o componente da bomba.
-     * chama o método DefinirDano da bomba e o método DefinirAlvo.
-    */
+    // Método para fazer a torre disparar a bomba. 
     public void DispararBomba(int dano, EnemyBase enemy)
     {
         GameObject bomba = Instantiate(bombaPrefab, pontoDeTiro.position, Quaternion.identity); //Variável da bomba que recebe o instanciamente do prefab da bomba.
@@ -54,6 +44,8 @@ public class TowerBase : MonoBehaviour, IAtacavel
 
         bombaScript.DefinirAlvo(enemy.gameObject);
     }
+
+
 
     // Método que tem como função atacar os inimigos.
     public virtual void Atacar(GameObject alvo)

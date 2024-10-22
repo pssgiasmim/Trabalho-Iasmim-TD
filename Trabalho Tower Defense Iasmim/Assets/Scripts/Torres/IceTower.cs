@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//Subclasse que representa IceTower e o seu método de Ataque.
 public class IceTower : TowerBase
 {
     //Método responsável por organizar informações de IceTower

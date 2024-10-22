@@ -6,17 +6,15 @@ using UnityEngine;
 public class Alcance : MonoBehaviour
 {
 
-     TowerBase torre; //
+     TowerBase torre; //Variável do tipo TowerBase.
 
-    /* Método que verifica se os inimigos estão perto das torres.
-     * Se o inimigo ter a tag inimigo, e ele estiver perto (on trigger)
-     * A torre ataca.
-     */
-
+    //Método que 
     private void Start()
     {
         torre = GetComponentInParent<TowerBase>();
     }
+
+    // Método que verifica se os inimigos estão perto das torres.   
     public void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Inimigo"))

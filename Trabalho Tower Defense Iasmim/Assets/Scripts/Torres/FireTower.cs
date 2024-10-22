@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//Subclasse que representa FireTower e o seu método de Ataque.
 public class FireTower : TowerBase
 {
    //Método responsável por organizar as informações da torre de fogo.
@@ -10,6 +11,7 @@ public class FireTower : TowerBase
         
    }
 
+    //Método que faz a FireTower disparar apenas uma bomba contra os inimigos.
     public override void Atacar(GameObject alvo)
     {
         if (Time.time >= ultimoAtaque + taxaDeAtaque)

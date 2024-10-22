@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//Subclasse que representa EnemyDark e o que ele faz após ser destruido.
 public class EnemyDark : EnemyBase
 {
     //Método que referencia questões de inimigo escuro

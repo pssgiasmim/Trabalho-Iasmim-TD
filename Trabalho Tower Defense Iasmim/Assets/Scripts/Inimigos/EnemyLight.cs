@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//Subclasse que representa EnemyLight e o que ele faz após ser destruido.
 public class EnemyLight : EnemyBase
 {
     // Método de referencias das questões do inimigo de luz
