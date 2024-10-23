@@ -127,6 +127,7 @@ public class GameManager : MonoBehaviour
     {
         telaGameOver.SetActive(true);
         pontosFinaisText.text = "Pontuação Final: " + pontosDoJogador;
+        Time.timeScale = 0;
     }
 
 
@@ -134,6 +135,7 @@ public class GameManager : MonoBehaviour
     //Método responsável por reiniciar o jogo.
     public void ReiniciarJogo()
     {
+        Time.timeScale = 1;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }
