@@ -14,12 +14,13 @@ public class SpawnManager : MonoBehaviour
     [SerializeField] GameObject EnemyRock; //Variável que armazena no inspector o EnemyRock
                                            //.
     float timer = 10.0f; //Tempo entre os grupos de inimigos;
-    float tempoDeSpawn = 0f; //Temporizador para controlar o spawn dos grupos;
+    float tempoDeSpawn = 1.5f; //Temporizador para controlar o spawn dos grupos;
     int inimigosSpawnados = 0; //Contador de grupos que já foram spawnados;
     int tamanhoDoGrupo = 10; //Quantidade de inimigos por grupo;
     int tipoInimigo; //Variável que tem um inimigo aleatório que servirá como condição para instanciar.
     int spawnPlace; //Variável que tem um valor aleatório  que verá a posição de onde o inimigo será instanciado.
     float y; //Variáveis que irão armazenar as posições. X é 7.85 e Y é aleatório.
+    float tempoAtual = 0f; //Temporizador para controlar o spawn dentro do grupo
 
     //Singleton, que permite que todas as coisas públicas da classe sejam acessadas por outra classe.
     #region Singleton
@@ -31,12 +32,38 @@ public class SpawnManager : MonoBehaviour
     }
     #endregion
 
+    //Método que ativa o método Spawn
+    public void Update()
+    {
+        if (timer > 0)
+        {
+            timer -= Time.deltaTime;
+        }
 
+        else
+        {
+            tempoAtual -= Time.deltaTime;
+
+            if (tempoAtual <= 0)
+            {
+                Spawn();
+                tempoAtual = tempoDeSpawn;
+            }
+            
+
+            if (inimigosSpawnados >= tamanhoDoGrupo)
+            {
+                inimigosSpawnados = 0;
+                timer = 10.0f;
+            }
+        }
+        
+    }
 
     //Método que vai Spawnar os inimigos na cena, em direção das torres.
     public void Spawn()
     {
-       if (tempoDeSpawn <= 0 && inimigosSpawnados < tamanhoDoGrupo) // Se o tempo estiver zerado e ainda houver inimigos para spawnar no grupo
+       if (inimigosSpawnados < tamanhoDoGrupo) // Se o tempo estiver zerado e ainda houver inimigos para spawnar no grupo
        {
             
             spawnPlace = Random.Range(1, 4);
@@ -88,20 +115,11 @@ public class SpawnManager : MonoBehaviour
                     GameManager.instance.AdicionarInimigos(obj);
             }
 
+            
             inimigosSpawnados++; //Amenta o contador de inimigos spawnados;
-            tempoDeSpawn = 1.0f; //Tempo entre cada spawn de inimigo;
+            timer = tempoDeSpawn; //Tempo entre cada spawn de inimigo;
 
-            if (inimigosSpawnados >= tamanhoDoGrupo) // Quando 10 inimigos forem spawnados, reinicia o grupo
-            {
-                inimigosSpawnados = 0;
-
-                tempoDeSpawn = 10f; //Tempo de spawn de cada grupo;
-                
-                if (tempoDeSpawn > 0) //reduz o tempo de espera entyre os spawns;
-                {
-                    tempoDeSpawn  -= Time.deltaTime;
-                }
-            }
+            
        } 
 
     }
@@ -109,9 +127,5 @@ public class SpawnManager : MonoBehaviour
 
 
 
-    //Método que ativa o método Spawn
-    public void Update()
-    {
-        Spawn();
-    }
+    
 }
