@@ -94,7 +94,7 @@ public class AdsManager : MonoBehaviour, IUnityAdsInitializationListener,IUnityA
 
     public void OnUnityAdsShowClick(string placementId)
     {
-        //Não Utilizar
+        //Não utilizar
     }
 
     
