@@ -78,6 +78,7 @@ public class AdsManager : MonoBehaviour, IUnityAdsInitializationListener,IUnityA
         }
     }
 
+     
 
     //Método que mostra a propaganda de recompensa;
     public void MostrarRewarded()
@@ -140,12 +141,16 @@ public class AdsManager : MonoBehaviour, IUnityAdsInitializationListener,IUnityA
                 {
                     AnuncioRecompensa(50); //O jogador recebe 50 pontos como recompensa
                 }
-                else
-                {
-                    Debug.Log("Anúncio não completado.");
-                }
+                
+               
+            }
+            else
+            {
+                Debug.Log("Anúncio não completado.");
             }
         }
+
+
         //Para dar recompensa, o delegate pode ser criado dentro deste script, porém deve armazenar os métodos de fora.
     }
 

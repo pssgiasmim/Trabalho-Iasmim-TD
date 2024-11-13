@@ -4,6 +4,7 @@ using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 //A classe GameManager, gerencia tudo o que tem dentro do jogo. Como uma lista de inimigos, a tela de GameOver e os pontos que o jogador recebe e desconta.
 public class GameManager : MonoBehaviour
@@ -24,7 +25,7 @@ public class GameManager : MonoBehaviour
     public delegate void DelegateDaRecompensa(int valor); //Delegate para recompensar o jogador com pontos;
     public DelegateDaRecompensa valores; //Variável baseada no delegate;
 
-
+    
 
     //Singleton, que permite que todas as coisas públicas da classe sejam acessadas por outra classe.
     #region Singleton
@@ -44,6 +45,7 @@ public class GameManager : MonoBehaviour
     {
         AtualizarUI();
         telaGameOver.SetActive(false);
+        
 
         //Inscreve no evento de recompensar o jogador
         if (AdsManager.instance != null)
@@ -149,6 +151,16 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 0;
     }
 
+    //Método que permite o jogador continuar de onde parou apó assistir uma propaganda de recompensa
+    public void ContinuarJogo(int valor)
+    {
+        //"reseta" para continuar de onde parou.
+        telaGameOver.SetActive(false); 
+        inimigosQuePassaram = 0;
+        pontosDoJogador = 0;
+        AtualizarUI();
+        Time.timeScale = 1;
+    }
 
 
     //Método responsável por reiniciar o jogo.
@@ -156,5 +168,17 @@ public class GameManager : MonoBehaviour
     {
         Time.timeScale = 1;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
+    public void IntermediarioPonto()
+    {
+        AdsManager.instance.MostrarRewarded();
+        AdsManager.instance.AnuncioRecompensa = AdicionarPontosDeRecompensa;
+    }
+
+    public void IntermediarioContinuarJogo()
+    {
+        AdsManager.instance.MostrarRewarded();
+        AdsManager.instance.AnuncioRecompensa = ContinuarJogo;
     }
 }
