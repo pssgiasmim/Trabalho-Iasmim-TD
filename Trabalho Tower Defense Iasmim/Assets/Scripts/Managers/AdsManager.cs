@@ -91,10 +91,12 @@ public class AdsManager : MonoBehaviour, IUnityAdsInitializationListener,IUnityA
             if (contadorInterstitial % 2 == 0)
             {
                 Advertisement.Show(interstitialIDSkip, this); // Exibe o intersticial que pode ser pulado
+                Advertisement.Banner.Hide();
             }
             else
             {
                 Advertisement.Show(interstitialID, this); // Exibe o intersticial que NÃO pode ser pulado
+                Advertisement.Banner.Hide();
             }
 
             // Inicia o contador e marca que o intersticial não foi fechado
