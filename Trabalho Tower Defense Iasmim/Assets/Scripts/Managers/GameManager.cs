@@ -20,7 +20,9 @@ public class GameManager : MonoBehaviour
     [SerializeField] TextMeshProUGUI pontosFinaisText; //Variável que armazena e apreenta os pontos finais do jogador.
 
     public Vector2 screenBounds; //Variável que armazena os valores de scrrenbounds.
-    
+
+    public delegate void DelegateDaRecompensa(int valor); //Delegate para recompensar o jogador com pontos;
+    public DelegateDaRecompensa valores; //Variável baseada no delegate;
 
 
 
@@ -42,8 +44,45 @@ public class GameManager : MonoBehaviour
     {
         AtualizarUI();
         telaGameOver.SetActive(false);
+
+        //Inscreve no evento de recompensar o jogador
+        if (AdsManager.instance != null)
+        {
+            AdsManager.instance.AnuncioRecompensa += AdicionarPontosDeRecompensa;
+        }
+
     }
 
+    public void Desinscrever() // Desinscreve do evento quando o GameManager for destruído
+    {
+        if (AdsManager.instance != null)
+        {
+            AdsManager.instance.AnuncioRecompensa -= AdicionarPontosDeRecompensa;
+        }
+    }
+
+
+    //Método responsável por atualizar a UI conforme o pontos feitos pelo jogador.
+    public void AtualizarUI()
+    {
+        if (pontosText != null)
+        {
+            pontosText.text = "Pontos: " + pontosDoJogador.ToString();
+        }
+    }
+
+    //Método para fazer o jogador receber pontos para cada inimigo que ele matar.
+    public void AdicionarPontos(int pontos)
+    {
+        pontosDoJogador += pontos;
+        AtualizarUI();
+    }
+
+    // Método que será chamado pelo AdsManager para adicionar pontos de recompensa
+    public void AdicionarPontosDeRecompensa(int valor)
+    {
+        AdicionarPontos(valor); // Adiciona o valor que veio do AdsManager ao jogador
+    }
 
 
     //Método que está verificando toda hora de os inimigos passaram das torres.
@@ -70,26 +109,6 @@ public class GameManager : MonoBehaviour
     {
         enemies.Add(obj);
         
-    }
-
-
-
-    //Método para fazer o jogador receber pontos para cada inimigo que ele matar.
-    public void AdicionarPontos(int pontos)
-    {
-        pontosDoJogador += pontos;
-        AtualizarUI();
-    }
-
-
-
-    //Método responsável por atualizar a UI conforme o pontos feitos pelo jogador.
-    public void AtualizarUI()
-    {
-        if (pontosText != null)
-        {
-            pontosText.text = "Pontos: " + pontosDoJogador.ToString();
-        }
     }
 
 

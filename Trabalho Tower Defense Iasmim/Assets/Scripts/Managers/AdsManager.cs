@@ -23,6 +23,9 @@ public class AdsManager : MonoBehaviour, IUnityAdsInitializationListener,IUnityA
     private float timer = 0f; //Timer para controlar o tempo;
     private bool bannerVisivel = false; //Controla se o Banner está aparecendo na tela;
 
+    public delegate void DelegateDaRecompensa(int valor); //Delegate que cuida das recompensas do jogador
+    public DelegateDaRecompensa AnuncioRecompensa; //Anuncio de recompensa do jogador
+
     //Singleton, que permite que todas as coisas públicas da classe sejam acessadas por outra classe.
     #region Singleton
     public static AdsManager instance;
@@ -44,10 +47,13 @@ public class AdsManager : MonoBehaviour, IUnityAdsInitializationListener,IUnityA
     //Método que é chamado a cada frame
     void Update()
     {
-        if (anuncioExibido) return; // Não mostra o banner enquanto outro anúncio estiver sendo exibido
+        if (anuncioExibido)  // Não mostra o banner enquanto outro anúncio estiver sendo exibido
         {
-            timer += Time.deltaTime;
+            return;
+            
         }
+
+        timer += Time.deltaTime;
 
         // Lógica para exibir e esconder o banner com base no tempo
         if (bannerVisivel)
@@ -72,6 +78,13 @@ public class AdsManager : MonoBehaviour, IUnityAdsInitializationListener,IUnityA
         }
     }
 
+
+    //Método que mostra a propaganda de recompensa;
+    public void MostrarRewarded()
+    {
+        Advertisement.Banner.Hide();
+        Advertisement.Show(rewardedID, this); 
+    }
 
     //Mostra o banner num determinado tempo
     public void MostrarBanner()
@@ -107,6 +120,8 @@ public class AdsManager : MonoBehaviour, IUnityAdsInitializationListener,IUnityA
 
     public void OnUnityAdsShowComplete(string placementId, UnityAdsShowCompletionState showCompletionState)
     {
+        anuncioExibido = false;
+
         if (placementId == interstitialID || placementId == interstitialIDSkip )
         {
             // Caso o intersticial seja pulado ou finalizado normalmente
@@ -114,6 +129,23 @@ public class AdsManager : MonoBehaviour, IUnityAdsInitializationListener,IUnityA
             SpawnManager.instance.ContinuarSpawn(); //Chama a função que continua a spawnar os inimigos.
         }
 
+
+        if (placementId == rewardedID)
+        {
+            if (showCompletionState == UnityAdsShowCompletionState.COMPLETED)
+            {
+                Debug.Log("Anúncio completo! Recompensando jogador...");
+                
+                if (AnuncioRecompensa != null)
+                {
+                    AnuncioRecompensa(50); //O jogador recebe 50 pontos como recompensa
+                }
+                else
+                {
+                    Debug.Log("Anúncio não completado.");
+                }
+            }
+        }
         //Para dar recompensa, o delegate pode ser criado dentro deste script, porém deve armazenar os métodos de fora.
     }
 
@@ -125,7 +157,7 @@ public class AdsManager : MonoBehaviour, IUnityAdsInitializationListener,IUnityA
 
     public void OnUnityAdsShowStart(string placementId)
     {
-
+        anuncioExibido = true;
     }
     public void OnInitializationComplete()
     {
