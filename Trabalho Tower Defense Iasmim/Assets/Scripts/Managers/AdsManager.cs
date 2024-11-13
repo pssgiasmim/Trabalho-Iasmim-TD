@@ -15,10 +15,24 @@ public class AdsManager : MonoBehaviour, IUnityAdsInitializationListener,IUnityA
     public string rewardedID = "Rewarded_Android"; //ID da recompensa;
 
     private bool anuncioExibido = false; //Verifica s tem anúncio sendo exibido;
+    private int contadorInterstitial = 0; //Contador para alternar entre intersticiais puláveis e não puláveis
+    private bool interstitialFechado = true; //Controla se o interstitial está aberto ou fechado.
+
     public float tempoExibicaoBanner = 10f; //Tempo de exibição do banner na  tela;
     public float tempoEsconderBanner = 5f; //Tempo em que o banner fica escondido;
     private float timer = 0f; //Timer para controlar o tempo;
     private bool bannerVisivel = false; //Controla se o Banner está aparecendo na tela;
+
+    //Singleton, que permite que todas as coisas públicas da classe sejam acessadas por outra classe.
+    #region Singleton
+    public static AdsManager instance;
+
+    private void Awake()
+    {
+        instance = this;
+    }
+    #endregion
+
 
     // Inicia tudo
     void Start()
@@ -68,14 +82,43 @@ public class AdsManager : MonoBehaviour, IUnityAdsInitializationListener,IUnityA
         timer = 0f;
     }
 
+    // Função para mostrar o intersticial
+    public void MostrarInterstitial()
+    {
+       if (interstitialFechado)
+        {
+            // Alterna entre os intersticiais puláveis e não puláveis
+            if (contadorInterstitial % 2 == 0)
+            {
+                Advertisement.Show(interstitialIDSkip, this); // Exibe o intersticial que pode ser pulado
+            }
+            else
+            {
+                Advertisement.Show(interstitialID, this); // Exibe o intersticial que NÃO pode ser pulado
+            }
+
+            // Inicia o contador e marca que o intersticial não foi fechado
+            contadorInterstitial++;
+            interstitialFechado = false;
+        }
+    }
+
     public void OnUnityAdsShowComplete(string placementId, UnityAdsShowCompletionState showCompletionState)
     {
+        if (placementId == interstitialID || placementId == interstitialIDSkip )
+        {
+            // Caso o intersticial seja pulado ou finalizado normalmente
+            interstitialFechado = true; // Marca o intersticial como fechado
+            SpawnManager.instance.ContinuarSpawn(); //Chama a função que continua a spawnar os inimigos.
+        }
+
         //Para dar recompensa, o delegate pode ser criado dentro deste script, porém deve armazenar os métodos de fora.
     }
 
     public void OnUnityAdsShowFailure(string placementId, UnityAdsShowError error, string message)
     {
-        //Aprecer mensagem que ocorreu erro ao carregar a propaganda
+        interstitialFechado = true; // Aconteceu algum erro ao mostrar o anúncio
+        SpawnManager.instance.ContinuarSpawn(); // Chama a função no SpawnManager para continuar o spawn
     }
 
     public void OnUnityAdsShowStart(string placementId)

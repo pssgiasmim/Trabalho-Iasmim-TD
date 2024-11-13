@@ -21,6 +21,7 @@ public class SpawnManager : MonoBehaviour
     int spawnPlace; //Variável que tem um valor aleatório  que verá a posição de onde o inimigo será instanciado.
     float y; //Variáveis que irão armazenar as posições. X é 7.85 e Y é aleatório.
     float tempoAtual = 0f; //Temporizador para controlar o spawn dentro do grupo
+    private bool podeSpawnar = true; // Controla se pode spawnar novos inimigos após o interstitial
 
     //Singleton, que permite que todas as coisas públicas da classe sejam acessadas por outra classe.
     #region Singleton
@@ -35,6 +36,8 @@ public class SpawnManager : MonoBehaviour
     //Método que ativa o método Spawn
     public void Update()
     {
+        if (!podeSpawnar) return; // Não permite spawnar até que o intersticial seja fechado
+
         if (timer > 0)
         {
             timer -= Time.deltaTime;
@@ -55,9 +58,17 @@ public class SpawnManager : MonoBehaviour
             {
                 inimigosSpawnados = 0;
                 timer = 10.0f;
+                AdsManager.instance.MostrarInterstitial(); // Mostra o intersticial após cada onda
+                podeSpawnar = false; // Impede a próxima onda de aparecer até o intersticial ser fechado
             }
         }
         
+    }
+
+    // Método para continuar o spawn após o fechamento ou pulo do intersticial
+    public void ContinuarSpawn()
+    {
+        podeSpawnar = true; // Permite spawnar o próximo grupo de inimigos
     }
 
     //Método que vai Spawnar os inimigos na cena, em direção das torres.
