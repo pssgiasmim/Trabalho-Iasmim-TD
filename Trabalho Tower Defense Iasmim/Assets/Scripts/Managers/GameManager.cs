@@ -170,12 +170,14 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
+    //Método que o delegate está aplicado recendo pontos.
     public void IntermediarioPonto()
     {
         AdsManager.instance.MostrarRewarded();
         AdsManager.instance.AnuncioRecompensa = AdicionarPontosDeRecompensa;
     }
 
+    //Método que o delegate está aplicado podendo continuar o jogo.
     public void IntermediarioContinuarJogo()
     {
         AdsManager.instance.MostrarRewarded();
