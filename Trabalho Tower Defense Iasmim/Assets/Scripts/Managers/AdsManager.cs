@@ -25,6 +25,7 @@ public class AdsManager : MonoBehaviour, IUnityAdsInitializationListener,IUnityA
 
     public delegate void DelegateDaRecompensa(int valor); //Delegate que cuida das recompensas do jogador
     public DelegateDaRecompensa AnuncioRecompensa; //Anuncio de recompensa do jogador
+    public bool rewardedFechado = true; //Controle se o rewarded está aberto ou fechado.
 
     //Singleton, que permite que todas as coisas públicas da classe sejam acessadas por outra classe.
     #region Singleton
@@ -85,6 +86,7 @@ public class AdsManager : MonoBehaviour, IUnityAdsInitializationListener,IUnityA
     {
         Advertisement.Banner.Hide();
         Advertisement.Show(rewardedID, this); 
+        rewardedFechado = false;
     }
 
     //Mostra o banner num determinado tempo
@@ -130,6 +132,8 @@ public class AdsManager : MonoBehaviour, IUnityAdsInitializationListener,IUnityA
             SpawnManager.instance.ContinuarSpawn(); //Chama a função que continua a spawnar os inimigos.
         }
 
+        Time.timeScale = 1;
+        //SpawnManager.instance.ContinuarSpawn();
 
         if (placementId == rewardedID)
         {
@@ -150,6 +154,10 @@ public class AdsManager : MonoBehaviour, IUnityAdsInitializationListener,IUnityA
             }
         }
 
+       
+        
+            
+        
 
         //Para dar recompensa, o delegate pode ser criado dentro deste script, porém deve armazenar os métodos de fora.
     }
@@ -163,6 +171,7 @@ public class AdsManager : MonoBehaviour, IUnityAdsInitializationListener,IUnityA
     public void OnUnityAdsShowStart(string placementId)
     {
         anuncioExibido = true;
+        Time.timeScale = 0; 
     }
     public void OnInitializationComplete()
     {

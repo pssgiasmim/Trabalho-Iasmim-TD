@@ -130,8 +130,10 @@ public class SpawnManager : MonoBehaviour
             inimigosSpawnados++; //Amenta o contador de inimigos spawnados;
             timer = tempoDeSpawn; //Tempo entre cada spawn de inimigo;
 
-            
        } 
+
+      
+
 
     }
 
