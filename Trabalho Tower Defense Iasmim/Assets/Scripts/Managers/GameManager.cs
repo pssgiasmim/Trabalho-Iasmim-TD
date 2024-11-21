@@ -22,8 +22,8 @@ public class GameManager : MonoBehaviour
 
     public Vector2 screenBounds; //Variável que armazena os valores de scrrenbounds.
 
-    public delegate void DelegateDaRecompensa(int valor); //Delegate para recompensar o jogador com pontos;
-    public DelegateDaRecompensa valores; //Variável baseada no delegate;
+    //public delegate void DelegateDaRecompensa(int valor); //Delegate para recompensar o jogador com pontos;
+    //public DelegateDaRecompensa valores; //Variável baseada no delegate;
 
     
 
@@ -157,7 +157,7 @@ public class GameManager : MonoBehaviour
         //"reseta" para continuar de onde parou.
         telaGameOver.SetActive(false); 
         inimigosQuePassaram = 0;
-        pontosDoJogador = 0;
+        pontosDoJogador = pontosDoJogador;
         AtualizarUI();
         Time.timeScale = 1;
     }
